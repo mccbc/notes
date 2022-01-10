@@ -1,4 +1,19 @@
 
+2022 01 10
+==========
+
+Q: If you have 10% transit depth at some amount away form line center, what is the line center optical depth?
+
+cross section
+length scale - jupiter radii
+
+jupiters radius is 1/10 of the suns
+Volume of jupiter is 1/1000, mass is 1/1000, density is about the same
+Earth is about 1 factor of 10 below jupiter in radius
+
+Almost everything has density 1g/cm^3, for reference. Earth is ~4-5x higher density
+
+
 2022 01 06
 ==========
 
