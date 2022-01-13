@@ -1,3 +1,16 @@
+2022 01 13
+==========
+
+Resonance line - an allowed dipole transition.
+
+Next step for analytic sphere of constant density -> exponentially falling density in atmosphere.
+Line center is always super optically thick, but wings are optically thin. 
+At some wavelength, there will be a point in the atmosphere where the optical depth is 1. 
+
+Sample an optical depth to move through. This yields a path length. Find characteristic length to surrounding zone in r, theta, phi, and take the minimum. This is delta r. If path length is less than delta r, then take the step and don't cross zones. If path length is longer than delta r, take a step of size delta r and update zones. Also update the optical depth you've moved through. Now you know how far you still have to go before this step is complete, and you can still update the moments in every zone you cross.
+
+Accumulate moments in spherical polar. Use cell center basis vectors to do the calculation, but this comes after.
+
 2022 01 12
 ==========
 
