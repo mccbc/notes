@@ -1,3 +1,80 @@
+2022 01 12
+==========
+
+Athena Spherical Transport Modifications
+
+GeneralMover::Move
+------------------
+
+Description: 
+Take little steps through the grid. 
+Make sure tauremaining is > 0.
+Then a while loop that continues evolving until it goes the requisite number of mean free paths.
+
+VerletStep, PropogatePolarization both integrate the path as a function of an affine parameter for the geodesics. 
+For my implementation, I'll replace this with a simple Cartesian step and remove the polarization.
+
+ [ ] WRITE UpdateZone. After taking a step in the mover, call update zones to check if you've moved into a new zone.
+     step = kx * dl replaces VerletStep.
+     x = xinit + dl * kx
+     step is going be some direction, new x is initial x plus component of direction of photon kx times some dl, step size.
+     
+ [ ] Make the step size roughly the size of the mean free path. 
+     We know what the opacity coefficients are, scattering+absorption, so then compute 1/(scattering+absorption).
+     This is the mean free path, or target dl. 
+     Then make the step equal to tau times dl. That's the target step.
+
+ [ ] Step may be much bigger than size of zone, so compare step length to width of the zone, delta r (characteristic zone size). 
+     Want to take a step that's the minimum of those two. 
+     If the MFP is small compared to the size of the zone, then just take a small step. 
+     But, if MFP is bigger than the zone, move out of the zone and check boundaries. 
+     After you take that step, check to see if you moved out of the zone.
+
+ [ ] Distribute half of the energy into one zone and half into another. 
+
+ [ ] Refinement: make sure you've only crossed one zone at a time by checking grid indices. 
+     Should only move one at a time. 
+     Even when you make a step of size delta r, make sure you haven't crossed into two different zones. 
+
+     What if you go through a corner? One integer in each direction allowed? 
+
+ [ ] WRITE GetZone that checks to see if an index has changed by 2, indicating the photon has moved two zones. If so, step back.
+     Do the motion in cartesian and then calculate the spherical polar coordinates after.
+     Keep kr kth kphi as the fundamental directions, and then convert to kx ky kz in the steps, then convert back?
+
+ [ ] Want to tabulate moments as kr, kth, kphi moments to keep it general. 
+     Must do the conversion every step. 
+     When we tabulate the zones we want the r theta and phi components of the flux. 
+     Especially useful for 1d and 2d calculations, 3d could get away with cartesian.
+
+SphericalPolarMover::Move
+-------------------------
+
+Description:
+For loop that integrates over the number of photons.
+Don't need the photon trajectory list - output that we don't need. Can delete.
+Tau remaining is set to GetOpticalDepth, which tells you how far you still have to go.
+Still need to define the montecarloblock, MCrandom, MCCord.
+kr, kth, kph are the photon vector in this setup. Have to convert to kx, ky, kz.
+
+Main loop: while tauremaining and still evolving and not gone too many iterations...
+
+ [ ] Remove all the r face, theta face, phi face stuff.
+
+ [ ] Main thing to do is update moments. 
+     UpdateMoments assumes you've calculated dl (the distance traveled in that zone)
+     It adds that photon packet to the cell it's in.
+     When I cross a zone, I'm going to divide the contribution into two different zones. 
+       Divide up half of the contribution into one zone, half into another. 
+       Trickiest part of the whole effort is how to distribute the energy between these two zones.
+    Use update moments to distribute the energy. 
+    Written in such a way that the function UpdateMoments always updates the zone where the photon currently is.
+       So how do we split energy across two zones?
+       May have to write it in such a way that we call updatemoments on the first zone,
+       then call it a second time in the zone the photon has moved into. 
+       This will partition the energy and then we can move into the next step.
+    Start in one zone, taking steps until you end up in another zone. 
+
 
 2022 01 10
 ==========
