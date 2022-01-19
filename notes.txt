@@ -27,12 +27,12 @@ Then a while loop that continues evolving until it goes the requisite number of 
 VerletStep, PropogatePolarization both integrate the path as a function of an affine parameter for the geodesics. 
 For my implementation, I'll replace this with a simple Cartesian step and remove the polarization.
 
- [ ] WRITE UpdateZone. After taking a step in the mover, call update zones to check if you've moved into a new zone.
-     step = kx * dl replaces VerletStep.
-     x = xinit + dl * kx
+ [X] WRITE UpdateZone. (Can use existing UpdateZone?) After taking a step in the mover, call update zones to check if you've moved into a new zone.
+
+ [X] x = xinit + dl * kx
      step is going be some direction, new x is initial x plus component of direction of photon kx times some dl, step size.
      
- [ ] Make the step size roughly the size of the mean free path. 
+ [X] Make the step size roughly the size of the mean free path. 
      We know what the opacity coefficients are, scattering+absorption, so then compute 1/(scattering+absorption).
      This is the mean free path, or target dl. 
      Then make the step equal to tau times dl. That's the target step.
