@@ -37,7 +37,7 @@ For my implementation, I'll replace this with a simple Cartesian step and remove
      This is the mean free path, or target dl. 
      Then make the step equal to tau times dl. That's the target step.
 
- [ ] Step may be much bigger than size of zone, so compare step length to width of the zone, delta r (characteristic zone size). 
+ [X] Step may be much bigger than size of zone, so compare step length to width of the zone, delta r (characteristic zone size). 
      Want to take a step that's the minimum of those two. 
      If the MFP is small compared to the size of the zone, then just take a small step. 
      But, if MFP is bigger than the zone, move out of the zone and check boundaries. 
