@@ -1,3 +1,29 @@
+2022 01 21
+==========
+
+Updates:
+ - sphericalpolaraltmover
+      Rewriting the move method, have logic blocked out now and checking details
+      Currently writing step routine, need help understanding syntax to do so
+ - pleiades
+      Account has been approved and set up, just one more training video to go through
+      Should be able to access computer now
+ - Owen paper
+      Started reading and highlighting, can discuss in arXiv discussion next Monday?
+ - CVGS
+      Have a temperature profile comparison between the two models & data
+      What's going on further in? Turbulence? Thin disk breakdown at small radii?
+
+
+Log into the PFE (pleiades front end)
+
+
+TODO:
+ [ ] Call NASA and set up pleiades first-time login
+ [ ] Test code for Asia and Trent - figure out NaN error for rg=6
+ [ ] Athena spherical code - review and make changes discussed in meeting today
+
+
 2022 01 13
 ==========
 
