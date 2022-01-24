@@ -1,5 +1,36 @@
+2022 01 24
+==========
+
+TODO: Pleiades
+--------------
+ [ ] How do you load modules?
+ [ ] What compiler do you use?
+ [ ] Run hello world in parallel
+ [ ] Run hello world in parallel with a batch file
+
+Athena++
+--------
+
+Do a trial step. Check the trial step, see if it's good. If not, revert without any additional calculations necessary. Should be very fast and general.
+
+May want to be able to undo the step if needed, even if only one zone is crossed. Main thing to do in case of average opacity is step forward, if you've gone too far, take a step back along the path you've traveled. Make sure the step backwards doesn't go BACK across the zone boundary. Should leave you in the same zone you've updated to.
+
+May be possible to express the photon direction vector in spherical, get r thet phi component, get a first oder estimate of how far you are from the zone boundary using dr or dtheta, treating everything as locally cartesian. 
+
+What is the exact answer? Need to start taking steps away from your initial position. As you take these steps, calculate the optical depth you've traveled. To get exact answer, need to take extremely small steps. Have an array of optical depths vs position. Then you have exactly the optical depth you've moved through and the position you end up in. 
+We want first-order accurate absorption coefficients and first order accurate positions in the cell. 
+
+
 2022 01 21
 ==========
+
+C++ questions:
+
+If we change zones and update chi, does the step size also update? It seems like it wouldn't, in which case the distance traveled in the next step would be chi1 * (tau_remaining / chi0) != tau_remaining. 
+
+The while loop goes until tauremaining is depleted, though dl, dmin, and step are not updated at every zone crossing.
+
+
 
 Updates:
  - sphericalpolaraltmover
@@ -20,8 +51,8 @@ Log into the PFE (pleiades front end)
 
 TODO:
  [ ] Call NASA and set up pleiades first-time login
- [ ] Test code for Asia and Trent - figure out NaN error for rg=6
- [ ] Athena spherical code - review and make changes discussed in meeting today
+ [X] Test code for Asia and Trent - figure out NaN error for rg=6
+ [X] Athena spherical code - review and make changes discussed in meeting today
 
 
 2022 01 13
