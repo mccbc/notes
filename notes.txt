@@ -3,10 +3,23 @@
 
 TODO: Pleiades
 --------------
- [ ] How do you load modules?
- [ ] What compiler do you use?
- [ ] Run hello world in parallel
+ [X] How do you load modules?
+        - Include the following line in your startup configuration file:
+        - `source /usr/local/lib/global.profile`
+        - Then `module load comp-intel mpi-hpe`
+        - List of modules: https://www.nas.nasa.gov/hecc/support/kb/software-on-nas-systems_116.html
+        - Can also use `module avail` to see available modules
+ [X] What compiler do you use?
+        - gcc and g++ are available and can be loaded in as modules (list them using `module avail`)
+ [X] Run hello world in parallel
+        - Submit interactive job on Pleiades using `qsub -I`
+        - `qsub -I -l select=1:ncpus=2:model=san:ompthreads=2` to request an interactive session
+        - `module load mpi-hpe/mpt` to load mpiexec commands
+        - `mpirun ./a.out`, or `mpiexec`. Not sure which.
  [ ] Run hello world in parallel with a batch file
+
+Use Lustre /nobackup for large temporary files to be moved off of Pleiades eventually.
+Run `ls -l /nobackup/your_username` to find which Lustre file system is assigned to you.
 
 Athena++
 --------
