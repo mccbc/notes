@@ -1,4 +1,3 @@
----
 2022 01 27
 ---
 TODO:
@@ -18,12 +17,10 @@ TODO:
  - [ ] Consider if stepping back by (delta tau)/(0.5(opacity1 + opacity2)) can 
      ever put you back in the zone you came from
 
----
 2022 01 24
 ---
- 
+
 TODO: Pleiades
---------------
 
  - [X] How do you load modules?
     - Include the following line in your startup configuration file:
@@ -45,8 +42,7 @@ TODO: Pleiades
 Use Lustre /nobackup for large temporary files to be moved off of Pleiades eventually.
 Run `ls -l /nobackup/your_username` to find which Lustre file system is assigned to you.
 
----
-Athena++
+Athena++ procedure
 ---
 
 Do a trial step. Check the trial step, see if it's good. If not, revert without any additional calculations necessary. Should be very fast and general.
@@ -60,7 +56,6 @@ We want first-order accurate absorption coefficients and first order accurate po
 
 (^Began markdown format^)
 
----
 2022 01 21
 ---
 
