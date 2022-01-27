@@ -1,3 +1,20 @@
+2022 01 27
+==========
+TODO:
+ [ ] Prepare GR thin disk tutorial for Asia
+ [ ] Prepare density radial profile tutorial for Trent
+ [ ] Implement corrective step in Athena spherical polar mover
+     - Choose length dl, take trial step.
+     - If zone changes by 1 in any direction, approve step. Otherwise, undo
+       step and try again.
+     - If step approved, use average opacity in the two zones to calculate
+       amount deducted from tauremaining.
+     - If tauremaining is negative after step, take a corrective step backwards.
+           - Step should be (tau_final - tau_remaining)/opacity2
+ [ ] Consider if stepping back by (delta tau)/(0.5(opacity1 + opacity2)) can 
+     ever put you back in the zone you came from
+
+
 2022 01 24
 ==========
 
