@@ -1,9 +1,11 @@
+---
 2022 01 27
-==========
+---
 TODO:
- [ ] Prepare GR thin disk tutorial for Asia
- [ ] Prepare density radial profile tutorial for Trent
- [ ] Implement corrective step in Athena spherical polar mover
+
+ - [ ] Prepare GR thin disk tutorial for Asia
+ - [ ] Prepare density radial profile tutorial for Trent
+ - [ ] Implement corrective step in Athena spherical polar mover
      - Choose length dl, take trial step.
      - If zone changes by 1 in any direction, approve step. Otherwise, undo
        step and try again.
@@ -11,35 +13,39 @@ TODO:
        amount deducted from tauremaining.
      - If tauremaining is negative after step, take a corrective step backwards.
            - Step should be (tau_final - tau_remaining)/opacity2
- [ ] Consider if stepping back by (delta tau)/(0.5(opacity1 + opacity2)) can 
+ - [ ] Consider if stepping back by (delta tau)/(0.5(opacity1 + opacity2)) can 
      ever put you back in the zone you came from
 
-
+---
 2022 01 24
-==========
-
+---
+ 
 TODO: Pleiades
 --------------
- [X] How do you load modules?
-        - Include the following line in your startup configuration file:
-        - `source /usr/local/lib/global.profile`
-        - Then `module load comp-intel mpi-hpe`
-        - List of modules: https://www.nas.nasa.gov/hecc/support/kb/software-on-nas-systems_116.html
-        - Can also use `module avail` to see available modules
- [X] What compiler do you use?
-        - gcc and g++ are available and can be loaded in as modules (list them using `module avail`)
- [X] Run hello world in parallel
-        - Submit interactive job on Pleiades using `qsub -I`
-        - `qsub -I -l select=1:ncpus=2:model=san:ompthreads=2` to request an interactive session
-        - `module load mpi-hpe/mpt` to load mpiexec commands
-        - `mpirun ./a.out`, or `mpiexec`. Not sure which.
- [ ] Run hello world in parallel with a batch file
+
+ - [X] How do you load modules?
+    - Include the following line in your startup configuration file:
+    - `source /usr/local/lib/global.profile`
+    - Then `module load comp-intel mpi-hpe`
+    - List of modules: https://www.nas.nasa.gov/hecc/support/kb/software-on-nas-systems_116.html
+    - Can also use `module avail` to see available modules
+
+ - [X] What compiler do you use?
+    - gcc and g++ are available and can be loaded in as modules (list them using `module avail`)
+
+ - [X] Run hello world in parallel
+    - Submit interactive job on Pleiades using `qsub -I`
+    - `qsub -I -l select=1:ncpus=2:model=san:ompthreads=2` to request an interactive session
+    - `module load mpi-hpe/mpt` to load mpiexec commands
+    - `mpirun ./a.out`, or `mpiexec`. Not sure which.
+ - [ ] Run hello world in parallel with a batch file
 
 Use Lustre /nobackup for large temporary files to be moved off of Pleiades eventually.
 Run `ls -l /nobackup/your_username` to find which Lustre file system is assigned to you.
 
+---
 Athena++
---------
+---
 
 Do a trial step. Check the trial step, see if it's good. If not, revert without any additional calculations necessary. Should be very fast and general.
 
@@ -50,9 +56,11 @@ May be possible to express the photon direction vector in spherical, get r thet 
 What is the exact answer? Need to start taking steps away from your initial position. As you take these steps, calculate the optical depth you've traveled. To get exact answer, need to take extremely small steps. Have an array of optical depths vs position. Then you have exactly the optical depth you've moved through and the position you end up in. 
 We want first-order accurate absorption coefficients and first order accurate positions in the cell. 
 
+(^Began markdown format^)
 
+---
 2022 01 21
-==========
+---
 
 C++ questions:
 
@@ -86,7 +94,7 @@ TODO:
 
 
 2022 01 13
-==========
+---
 
 Resonance line - an allowed dipole transition.
 
@@ -99,7 +107,7 @@ Sample an optical depth to move through. This yields a path length. Find charact
 Accumulate moments in spherical polar. Use cell center basis vectors to do the calculation, but this comes after.
 
 2022 01 12
-==========
+---
 
 Athena Spherical Transport Modifications
 
@@ -177,7 +185,7 @@ Main loop: while tauremaining and still evolving and not gone too many iteration
 
 
 2022 01 10
-==========
+---
 
 Q: If you have 10% transit depth at some amount away form line center, what is the line center optical depth?
 
@@ -192,7 +200,7 @@ Almost everything has density 1g/cm^3, for reference. Earth is ~4-5x higher dens
 
 
 2022 01 06
-==========
+---
 
 Start with spherical polar implementation of lya transfer
 
@@ -265,7 +273,7 @@ Then, what's the next problem?
 
 
 AAS Talk preparation
-====================
+---
 
 a 10 minute talk is an advertisement for people that want to talk to you after 
 
@@ -289,7 +297,7 @@ Come up with 2 or 3 context slides, and then 2 or 3 results slides, then conclus
 
 
 2021 11 11
-==========
+---
 
 [ ] Add to .bashrc
     export LD_LIBRARY_PATH=/usr/local/hdf5/lib:$LD_LIBRARY_PATH
@@ -315,7 +323,7 @@ Paper notes:
  [X] Cite Advanced Mathematical Methods for Scientists and Engineers: Asymptotic Methods and Perturbation Theory for matched asymptotic expansion
 
 Ongoing Tasks
-=============
+---
 [ ] Get set up with Pleiades
         Start reading about the different computers -- how many nodes are available, what would be the largest job you could run, read about the different queues.
         Be up and running and ready to do stuff on the cluster right away in January. Read about nodes, differences between them, have a PBS script that runs in advance. Sort of like SLURM, but for Pleiades.
@@ -344,7 +352,7 @@ Ongoing Tasks
 
 
 2021 11 04
-========================
+---
   Follwoing Harrington, we will be using a change of veariable from x to sigma, define those variables, then state what the COV implies on the line wing (wing approximation).
   Harrington showed that if you make a change ov variables, you turn two differential terms (single + double) into a single second derivative.
 
@@ -368,7 +376,7 @@ Ongoing Tasks
 
 
 Talk Abstract
-=============
+---
   Title: A Novel Solution to an Old Problem in Lyman Alpha Radiation Transfer
 
   Abstract: In exoplanet atmospheres, Lyman Alpha radiation can ionize atoms, dissociate molecules, and exert pressure forces that drive an outflow. Monte Carlo simulations of such phenomena have a large computational cost due to the extreme optical depths at Lya line center. We present a novel, semi-analytic solution to the radiative transfer equation for resonant scattering that is shown to correct discrepancies in previous models as compared with Monte Carlo. We also present a time-dependent solution that can be used to accelerate Monte Carlo simulations by sampling the photon escape time distribution directly.
@@ -380,7 +388,7 @@ Talk Abstract
 
 
 Athena edits
-============
+---
 
 Want to replace SphericalPolarMover
 Declar a new spheriecal polar mover to start from scratch
@@ -406,7 +414,7 @@ Understanding montecarloblock is the hardest part of the code
 
 
 Athena run info
-===============
+---
 
 mpirun -np 11 ~/athena-swdavis/bin/athena -i athinpt.sphtran
 
@@ -437,7 +445,7 @@ make all
 
 
 2021 10 05
-==========
+---
 
 Initial paper edits done - will look over this week
 Circular integral in complex space to show eigenmodes - SHOW PLOT
@@ -488,7 +496,7 @@ Flux goes as direction of each step, i.e. bouncing back and forth has no contrib
 
 
 Paper appendix discussion
-=========================
+---
 
 There are different physical contributions --- we are just plotting the contribution from the eigenmodes here. The other piece becomes important for emission away from line center. There is a non-resonant piece, we don't know how to treat it. The non-resonant piece is explicitly asymmetric, so it becomes zero for emission at line center.
 
@@ -507,7 +515,7 @@ Only when you include frequency diffusion do you get an infinite number of m for
 
 
 PROJECTS FOR SHANE
-==================
+---
 Monte carlo - not conceptually very hard
 Photons bounce around, scatter, get binned when they come out
   Intuitively pretty easy to understand
@@ -523,7 +531,7 @@ Lya scattering problem - not just spheres. What about other geometries?
 
 
 NOTES ON TIME-DEPENDENT LYA PROBLEMS
-====================================
+---
 Landau damping?
 
 How do we know we're getting all the poles in our sweep?
@@ -539,7 +547,7 @@ How do we know we're getting all the poles in our sweep?
 
 
 NOTES ON PAPER EDITS DESCRIBED BY PHIL
-======================================
+---
 
  [X] Lowest order mode, decay time agrees with MC above some optical depth. Describe what you see in the figure that shows this. Be more specific than "it converges"
 
@@ -598,7 +606,7 @@ Contribution of every other eigenmode is buried in the integral thta you have to
 If we could se tup the integrator to use a complex frequency, there could be a few tests to do
 
 Contour integrals
-=================
+---
 
 Experiments:
 Start at ome point in the complex plane and integrate a circle, come back to the same point. If you don't get the same value you started with, you've enclosed a pole or there's a branch cut.
@@ -649,7 +657,8 @@ It goes to zero at line center, but then it's an Airy function outwards.
 When you find your function of sigma, is the presence of the frequency there raised to a fractional power? Would force you to have a branch point in your solution.
 
 What is a branch cut?
-=====================
+---
+
 Z (real part) + i*(imaginary part)
 Imaginary in y axis, real in x axis.
 Nice functions are single valued. Z^2 is single valued.
@@ -660,7 +669,8 @@ Have to do this for multi-valued functions.
 
 
 Edits to time-dependent section:
-================================
+---
+
 If we give the piece of the solution that's just a sum over eigenmodes, this is what we find: for fig 8 and 9. However, this only works for the symmetric case, and we know there's a missing piece.
 
  [X] Numerical recipes - read up on rejection methods, chapter on inverses
@@ -678,7 +688,8 @@ If we give the piece of the solution that's just a sum over eigenmodes, this is 
 
 
 7 June 2021 Goals:
-==================
+---
+
  [X] Sweep test for consistency
  [X] Process m=1000 runs into plots, check convergence using steadystate.py
  [X] Process tau=10^5 MC run, make optical depth scaling plot with x axis as (a tau)^1/3
@@ -687,7 +698,8 @@ If we give the piece of the solution that's just a sum over eigenmodes, this is 
  [X] Write new sections of paper --- monte carlo description according to shane's meeting notes
 
 21 June 2021 Goals:
-===================
+---
+
  [X] TeX up Phil's notes on nondimensionalization and scaling relations
  [X] Plot showing H0 - MC, scale to show different tau on the same plot
  [X] Try modeling the solution as H0 + dH0/dsigma * Delta sigma (slope)
@@ -695,7 +707,7 @@ If we give the piece of the solution that's just a sum over eigenmodes, this is 
 
 
 Other
-=====
+---
  [-] Analytically integrating H0 over frequency, X 4piX 4piR^2 should give luminosity
  [-] Check normalization of other pieces --- Hbc should be normalized to zero in theory? Should have
      no net contribution to the flux.
@@ -714,7 +726,8 @@ Other
      Should take ~10 minutes
 
 2021-06-25
-==========
+---
+
 Everything was derived to be on the line wing, so we need to ignore what's 
 going on in the doppler core because that's where our assumptions break down.
 
@@ -747,7 +760,8 @@ only valid in the wing.
 
 
 2021-06-30
-==========
+---
+
  [X] Create three panel plot for tau=10^6, xinit varying
  [X] xinit.py plot
       tau0 = 10^5, 10^7, 10^9
@@ -777,7 +791,8 @@ Scale x over m, show that the functions are oscillatory out to sigma_tp?
  [X] Include discussion of sigma_tp and derivation of efoldings, etc
 
 2021-07-07
-==========
+---
+
 Is there any reason for the theory lines in panel 3 of fig 4 to agree with the monte carlo?
  - Try this log scale instead
 
@@ -803,9 +818,10 @@ Is there any reason for the theory lines in panel 3 of fig 4 to agree with the m
 
 
 2021-07-09
-==========
+---
 
- [X] Make xinit plots logscale, reupload to paper. Change y label to be log |P(x)|
+
+ -  [X] Make xinit plots logscale, reupload to paper. Change y label to be log |P(x)|
  [ ] Find out why discontinuity doesn't occur at x_s in Jsoln plots. Track down bug
          [ ] See if this is related to the wiggles in the Pnm v. m plot
  [X] Plot new scaling.py plot with fixed legend & label. Beautify for final draft!
@@ -876,33 +892,34 @@ Time dpeendent scheme is really just a way to get a handle of the escape time di
 
 
 
-Compile code on lyra, run through tests
-  compare outputs (supermongo plotting), maybe make equivalent in python
+ - Compile code on lyra, run through tests
+    - compare outputs (supermongo plotting), maybe make equivalent in python
 
-individual cell has optical depth 10^8, for on ephoton to escape 1 cell would be computationally impossible
+ - individual cell has optical depth 10^8, for on ephoton to escape 1 cell would be computationally impossible
 How do we speed it up?
-  Have a photon, draw a sphere around. After it has traveled through the optical depth, what is the p distribution for the photons that come out of the sphere? What direction, how long does it spend inside?
+    - Have a photon, draw a sphere around. After it has traveled through the optical depth, what is the p distribution for the photons that come out of the sphere? What direction, how long does it spend inside?
 
-Log normal distribution! (From Phil's work)
-  If this was true, it would be very easy to sample
-  We don't have a series solution for the Ly A case
+ - Log normal distribution! (From Phil's work)
+    - If this was true, it would be very easy to sample
+    - We don't have a series solution for the Ly A case
 
 
-[X] Plot sigma turning point, source, boundary for n=20 rather than n=1
-[X] find where sigma_tp < sigma_s, for large n small m
-        See if there is exponential growth in between the turning point and the source
-        Plot the eigenfunctions?
-Only going to get an asymmetry where the turning point is inside the source
-    Label source sigma and turning point sigma
+ - [X] Plot sigma turning point, source, boundary for n=20 rather than n=1
+ - [X] find where sigma_tp < sigma_s, for large n small m
+         - See if there is exponential growth in between the turning point and the source
+         - Plot the eigenfunctions?
+ - Only going to get an asymmetry where the turning point is inside the source
+     - Label source sigma and turning point sigma
 n=20 m=1
 
 
-To quantify asymmetries: Choose values of sigma that are positive, interpolate to find the value of J at the positive and negative of those values, then subtract them
+ - To quantify asymmetries: Choose values of sigma that are positive, interpolate to find the value of J at the positive and negative of those values, then subtract them
 
 
 Time-dependent Contour
-======================
-Contour you draw at each time should depend on time?
+---
+
+ - Contour you draw at each time should depend on time?
 Critical value of time is 1/gamma
 Doesn't make sense to go to values of gamma much larger than 1/time
 If you did draw a contour that went out near the resonance with gamma of order 1/time, you're only going to include the eigemodes with smaller gammas

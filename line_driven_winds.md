@@ -1,6 +1,7 @@
 # Line Driven Winds
 
-Sergei Dyda
+Talk by Sergei Dyda - 
+2022 01 20
 
 ---
 
