@@ -3,6 +3,8 @@
 ---
 TODO:
 
+ - [ ] Rewrite Hello World in parallel using MPI instead of OpenMP
+ - [ ] Run hello world C++ script using batch job on Pleiades
  - [ ] Prepare GR thin disk tutorial for Asia
  - [ ] Prepare density radial profile tutorial for Trent
  - [ ] Implement corrective step in Athena spherical polar mover
