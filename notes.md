@@ -2,10 +2,10 @@
 ---
 TODO:
 
- - [ ] Rewrite Hello World in parallel using MPI instead of OpenMP
- - [ ] Run hello world C++ script using batch job on Pleiades
- - [ ] Prepare GR thin disk tutorial for Asia
- - [ ] Prepare density radial profile tutorial for Trent
+ - [X] Rewrite Hello World in parallel using MPI instead of OpenMP
+ - [X] Run hello world C++ script using batch job on Pleiades
+ - [x] Prepare GR thin disk tutorial for Asia
+ - [x] Prepare density radial profile tutorial for Trent
  - [ ] Implement corrective step in Athena spherical polar mover
      - Choose length dl, take trial step.
      - If zone changes by 1 in any direction, approve step. Otherwise, undo
@@ -33,11 +33,12 @@ TODO: Pleiades
     - gcc and g++ are available and can be loaded in as modules (list them using `module avail`)
 
  - [X] Run hello world in parallel
+    - Compile using `mpicc` after loading mpi modules
     - Submit interactive job on Pleiades using `qsub -I`
-    - `qsub -I -l select=1:ncpus=2:model=san:ompthreads=2` to request an interactive session
+    - `qsub -I -l select=1:ncpus=4:model=san:mpiprocs=4` to request an interactive session
     - `module load mpi-hpe/mpt` to load mpiexec commands
-    - `mpirun ./a.out`, or `mpiexec`. Not sure which.
- - [ ] Run hello world in parallel with a batch file
+    - `mpiexec -np 4 ./a.out`
+ - [X] Run hello world in parallel with a batch file
 
 Use Lustre /nobackup for large temporary files to be moved off of Pleiades eventually.
 Run `ls -l /nobackup/your_username` to find which Lustre file system is assigned to you.
