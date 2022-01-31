@@ -1,12 +1,10 @@
--mc -sph_trans
-spherical transport test
+2022 01 31
+---
 
-tests/montecarlo
-convergence.py will run it from scratch
+ - [ ] Do `-mc -sph_trans` spherical transport test once code is finished.
 
-Does the test at a number of steps, mainly to test the generalmover. Testing step size. But it also tests the non-general relativistic (old spherical transport test). Can run that to get an athinput
-
--nstep = 0, don't want to use the general mover
+ - [ ] Run `tests/montecarlo/convergence.py`. Will produce athinput file. Does the test at a number of steps, mainly to test the generalmover. Testing step size, but it also tests the non-general relativistic case (old spherical transport test). Can run that to get an athinput
+     - `-nstep = 0`, don't want to use the general mover
 
 Moments test
 
