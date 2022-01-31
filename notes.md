@@ -1,3 +1,34 @@
+-mc -sph_trans
+spherical transport test
+
+tests/montecarlo
+convergence.py will run it from scratch
+
+Does the test at a number of steps, mainly to test the generalmover. Testing step size. But it also tests the non-general relativistic (old spherical transport test). Can run that to get an athinput
+
+-nstep = 0, don't want to use the general mover
+
+Moments test
+
+Want to have the moments updating before next meeting
+
+
+Pleiades
+
+Fiure out where your scratch directory is
+Where is lou large format storage? How do you transfer files back and forth
+
+Nobackup2 - PFE node
+Documentation - what is your scratch directory?
+
+
+mc_isothermal (NOT mc_iso_sph)
+Compile with sphpol coords, will automatically initialize as a sphere
+Third test - isothermal spherical problem. Spectra and moments inside a sphere of constant temp with a logarithmic drop in density as a func of radius. No analytic solution for the output. Compare old method to new method. After Thurs, 
+
+For resonance line test - write it youreslf. Doing the whole problem generator from scratch would be a good 
+
+
 2022 01 27
 ---
 TODO:
