@@ -1,30 +1,67 @@
+Spherical polar alt mover logic
+---
+Loop over all photons
+
+- Calculate indices of current zone
+- Calculate sines and cosines of th and p angles
+- Calculate kx, ky, kz direction vector
+- Store starting values of r, th, ph in case the step needs to be undone
+- Set x0, y0, z0 cartesian starting position vector
+- Get chi and calculate step size based on minimum of tauremaining/chi and shortest distance to any cell face
+- Sample an optical depth through which to move before the next scattering event
+- **While loop until the photon travels through the sampled optical depth, `tauremaining`**
+    - Take a trial step, adding `step*k` to cartesian photon position
+    - Update spherical polar position of photon
+    - Check if photon has changed zones
+        - **Photon has changed zones**
+            - Check if photon has changed by a maximum of one zone index in each coordinate
+                - **Photon has moved by one zone**
+                    - Update opacity in new zone
+                    - Use average opacity between new zone and old zone to deduct the optical depth traveled through from `tauremaining`
+                    - Check if `tauremaining` is negative
+                        - **`tauremaining` is negative**
+                            - Take a step in cartesian coordinates of distance equal to `tauremaining/chi` in the new zone to get `tauremaining` back to zero
+                            - Update spherical polar position after the corrective step
+                    - Photon has taken an approved step into a new zone. Its cartesian and spherical polar position are both correct.
+                    - Update zone index storage variables i1, i2, i3 for comparison with current zone index on next step
+                    - Update r0, th0, ph0 spherical polar storage variables in case next step has to be undone
+                    - Update stepsize for next step in new zone
+                    - Update extinction coefficient storage variable chi0 for average when photon moves into the next zone
+                - **Photon has moved by more than one zone**
+                    - Undo the trial step. Subtract `step*k` from cartesian coordinates and set the polar coordinates back to the stored variables r0, th0, ph0
+                    - Update zone indices based on spherical polar position after rolling back the step
+                    - Divide the step size by 2 and re-enter the while loop from the beginning
+        - **Photon has not changed zones**
+            - Deduct `chi * step` from `tauremaining`
+    - Check if photon is destroyed and print photon if so
+    - Update moments
+    - If photon has become NaN, set photon status to destroyed
+    - Perform any user work
+- Update k vector using sines and cosines of photon's spherical polar position
+
 2022 01 31
 ---
 
- - [ ] Do `-mc -sph_trans` spherical transport test once code is finished.
+**Athena**
+
+ - [ ] Do `-mc --prob=mc_sph_tran` spherical transport test once code is finished.
 
  - [ ] Run `tests/montecarlo/convergence.py`. Will produce athinput file. Does the test at a number of steps, mainly to test the generalmover. Testing step size, but it also tests the non-general relativistic case (old spherical transport test). Can run that to get an athinput
      - `-nstep = 0`, don't want to use the general mover
 
-Moments test
+ - [ ] Do moments test (Shane is still working on this code). Want to have the moments updating before next meeting
 
-Want to have the moments updating before next meeting
+ - [ ] Run `mc_isothermal` (NOT `mc_iso_sph`)
+     - Compile with sphpol coords, will automatically initialize as a sphere
+Isothermal spherical problem. Spectra and moments inside a sphere of constant temp with a logarithmic drop in density as a func of radius. No analytic solution for the output. Compare old method to new method - no analytic solution for this.
 
+ - [ ] Resonance line test - would be a good exercise to write it youreslf. Write the problem generator from scratch.
 
-Pleiades
+**Pleiades**
 
-Fiure out where your scratch directory is
-Where is lou large format storage? How do you transfer files back and forth
-
-Nobackup2 - PFE node
-Documentation - what is your scratch directory?
-
-
-mc_isothermal (NOT mc_iso_sph)
-Compile with sphpol coords, will automatically initialize as a sphere
-Third test - isothermal spherical problem. Spectra and moments inside a sphere of constant temp with a logarithmic drop in density as a func of radius. No analytic solution for the output. Compare old method to new method. After Thurs, 
-
-For resonance line test - write it youreslf. Doing the whole problem generator from scratch would be a good 
+ - [ ] Figure out where your scratch directory is. Where is lou large format storage? How do you transfer files back and forth?
+     - nobackup2 - PFE node
+ - [ ] Look through documentation - what is your scratch directory?
 
 
 2022 01 27
@@ -35,7 +72,7 @@ TODO:
  - [X] Run hello world C++ script using batch job on Pleiades
  - [x] Prepare GR thin disk tutorial for Asia
  - [x] Prepare density radial profile tutorial for Trent
- - [ ] Implement corrective step in Athena spherical polar mover
+ - [X] Implement corrective step in Athena spherical polar mover
      - Choose length dl, take trial step.
      - If zone changes by 1 in any direction, approve step. Otherwise, undo
        step and try again.
