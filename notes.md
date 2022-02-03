@@ -1,5 +1,11 @@
-Spherical polar alt mover logic
----
+### C++ questions
+
+ - Added `printf` statements everywhere to find where the code was getting stopped; learning how to use `gdb` would be more efficient
+ - I don't think the while loop is actually setting exit flags on the photon when it completes a move outside the sphere.
+
+
+### Spherical polar alt mover logic
+
 Loop over all photons
 
 - Calculate indices of current zone
@@ -38,6 +44,7 @@ Loop over all photons
     - If photon has become NaN, set photon status to destroyed
     - Perform any user work
 - Update k vector using sines and cosines of photon's spherical polar position
+
 
 2022 01 31
 ---
