@@ -1,10 +1,20 @@
 2022 02 03
 ---
 
- - [ ] Debug `sphericalpolaraltmover` while loop
+ - [X] Debug `sphericalpolaraltmover` while loop
+ - [X] Rewrite line 188 to not use UpdateZone (expensive)
+ - [X] In `mccord.cpp`, set `dmin` to be a physical length even when using spherical polar coordinates
+ - [ ] Debug issue accessing `x2v(j)` in mccord.cpp
  - [ ] Run `sph_tran` test, compare outputs
  - [ ] Check `UpdateMoments` function, rewrite
  - [ ] Test updating moments against `sphericalpolarmover`
+
+#### Debug commands
+`print (abs(i3 - pphot->i3p[ip]))`
+`print (abs(i2 - pphot->i2p[ip]))`
+`print (abs(i1 - pphot->i1p[ip]))`
+`break sphericalpolaraltmover.cpp:97`
+`run -i athinput.sphtran`
 
 ### Athena
 
