@@ -1,3 +1,32 @@
+2022 02 03
+---
+
+ - [ ] Debug `sphericalpolaraltmover` while loop
+ - [ ] Run `sph_tran` test, compare outputs
+ - [ ] Check `UpdateMoments` function, rewrite
+ - [ ] Test updating moments against `sphericalpolarmover`
+
+### Athena
+
+- Configure with -debug
+    - Will configure with debugging enabled
+    - Can do this with MPI or with gcc or g++ compiler
+    - Easier to do debugging on a serial thing, so leave off mpi
+    - then make clean, make all
+    - Turns off all optimizations (-00 instead of -03, -03 is optimized)
+    - -g compiles with extra information that gnu debugger can use
+
+ - `gdb ../athena/bin/athena`
+     - To run, type `run -i athinput.sphtran`
+     - Then it'll run, but it's stuck in a loop. Then you can ctrl+c it. Can continue if you want to keep going
+     - Breakpoints - specific place in the code you want it to stop. `break sphericalpolaraltmover.cpp:110` (line number)
+     - `cont` until you get to the breakpoint. `print iter`, can print any variable
+     - `step` - go to next line
+     - `print *pphot` - can print all attributes of the photon class. Better to print individual photon quantities, i.e. `(*pphot).i1p`
+     - `backtrace` - tells you where in the stack you are. Will even tell you where it segfaulted if that's the issue.
+
+---
+
 ### C++ questions
 
  - Added `printf` statements everywhere to find where the code was getting stopped; learning how to use `gdb` would be more efficient
@@ -49,11 +78,13 @@ Loop over all photons
 2022 01 31
 ---
 
+ - [ ] Write down transfer equation for pure absorption and emission in spherical coordinates. What do the differential operators look like?
+
 **Athena**
 
  - [ ] Do `-mc --prob=mc_sph_tran` spherical transport test once code is finished.
 
- - [ ] Run `tests/montecarlo/convergence.py`. Will produce athinput file. Does the test at a number of steps, mainly to test the generalmover. Testing step size, but it also tests the non-general relativistic case (old spherical transport test). Can run that to get an athinput
+ - [X] Run `tests/montecarlo/convergence.py`. Will produce athinput file. Does the test at a number of steps, mainly to test the generalmover. Testing step size, but it also tests the non-general relativistic case (old spherical transport test). Can run that to get an athinput
      - `-nstep = 0`, don't want to use the general mover
 
  - [ ] Do moments test (Shane is still working on this code). Want to have the moments updating before next meeting
