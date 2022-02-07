@@ -1,10 +1,18 @@
+2022 02 07
+---
+- [ ] Write a virtual function `UpdateZone`  within `sphericalpolaraltmover.cpp`
+    - Should return a bool by reference `MultipleZones`
+    - Don't need to check anything past 2 zones - if we've moved through that many, we know we're going to undo the move
+
+
+
 2022 02 03
 ---
 
  - [X] Debug `sphericalpolaraltmover` while loop
  - [X] Rewrite line 188 to not use UpdateZone (expensive)
  - [X] In `mccord.cpp`, set `dmin` to be a physical length even when using spherical polar coordinates
- - [ ] Debug issue accessing `x2v(j)` in mccord.cpp
+ - [X] Debug issue accessing `x2v(j)` in mccord.cpp
  - [ ] Run `sph_tran` test, compare outputs
  - [ ] Check `UpdateMoments` function, rewrite
  - [ ] Test updating moments against `sphericalpolarmover`
