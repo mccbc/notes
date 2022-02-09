@@ -4,6 +4,8 @@
     - Pass by reference `MultipleZones`
     - Don't need to check anything past 2 zones - if we've moved through that many, we know we're going to undo the move
 
+#### Questions
+ - How does the existing code handle the `polar` and `periodic` boundary flags? i.e., what would using the code `pmcb->pbval->BoundaryFunction_[BoundaryFace::outer_x3](pmcb,pcoord,pphot,ip);` actually do?
 
 
 2022 02 03
