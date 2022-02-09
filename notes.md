@@ -1,7 +1,7 @@
 2022 02 07
 ---
-- [ ] Write a virtual function `UpdateZone`  within `sphericalpolaraltmover.cpp`
-    - Should return a bool by reference `MultipleZones`
+- [X] Write a virtual function `UpdateZone`  within `sphericalpolaraltmover.cpp`
+    - Pass by reference `MultipleZones`
     - Don't need to check anything past 2 zones - if we've moved through that many, we know we're going to undo the move
 
 
