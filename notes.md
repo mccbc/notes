@@ -1,3 +1,35 @@
+Group meeting
+---
+
+ - **Plasma frequency** - a plasma has dielectric properties, and a characteristic timescale with which it responds to perturbations in its charge distribution. Refraction of a photon depends on the photon frequency and the dielectric properties of the medium through which it's travelling --- therefore, for instance, a radio wave could be refracted by a plasma such as a corona. For other wavelengths, the refraction is very small.
+
+#### Xiaoshan's presentation on TDEs
+
+ - TDE rates correlate with BH mass, spin, binary, and occupation fraction
+ - TDE continuum can be described by thermal blackbody radiation, but the inferred tempereature is bimodal
+     - Opical/UV and soft X-ray are exclusive, separated by debris disk emission
+     - X-ray-identified TDEs tend to be hotter in their blackbody temperature - is this different emission mechanism?
+ - TDEs have different lumiosities and temperatures as identified in different bands - properties of the TDE depend a lot on what wavelength band they're identified in
+ - Anomalous broad line emission detected in observed TDE, ended up being a Helium broad line (first study of TDE, rare event called helium-only TDE)
+ - Tools:
+     - Light curve: total luminosity in different wavebands. Has a t^(-5/3) decline, typically
+         - Can balance tidal force, star's self gravity, calculate stellar debris energy distribution and fall back time to find mass fall back rate prop to t^(-5/3)
+         - This is the rate for the most-bound material to fall back
+         - Temperature falloff with time should be proportional to Mdot^(1/4), meaning expected emission falloff should be prop to t^(-5/12), but it's not! Optical emission we see might not totally be from the accretion disk. Rise time is not clearly correlated to the BH mass.
+         - Either we're not seeing optical emission from an optically-thick accretion disk, or the accretion happens very quickly so that there's no delay between when the stream forms and accretion
+         - Peak luminosity and characteristic temperature
+     - Spectrum: black body continuum temperature, broad emission lines in H, He
+
+
+
+2022 02 10
+---
+ - [ ] Rewrite UpdateSingleZone
+     - Since we're converting to Cartesian coordinates for every step, the phi coordinate will never actually exceed 2pi (bounds of arccos). Thus, the boundary condition function cannot trigger properly. Need to write logic that detects boundary crossings based on position or index, not exceeding 2pi.
+     - For now, hardcode the periodic boundary condition in to the phi coordinate. We won't be able to make it general or use an arc segment.
+
+
+
 2022 02 07
 ---
 - [X] Write a virtual function `UpdateZone`  within `sphericalpolaraltmover.cpp`
@@ -6,6 +38,7 @@
 
 #### Questions
  - How does the existing code handle the `polar` and `periodic` boundary flags? i.e., what would using the code `pmcb->pbval->BoundaryFunction_[BoundaryFace::outer_x3](pmcb,pcoord,pphot,ip);` actually do?
+     - Answer: `polar` should never be triggered in our current usage, but if, for example, we put the theta boundary at the midplane, we may want to impose a boundary condition there for what happens if a photon exceeds pi/2. `periodic` detects a crossing past the periodic boundary, updates the position, and offsets the coordinate properly (e.g., subtracting 2pi for phi overlapping point)
 
 
 2022 02 03
