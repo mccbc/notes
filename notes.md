@@ -1,3 +1,19 @@
+2022 02 15
+---
+
+- [X] Issue with update moments in general mover is that the k vector is not nomralized. Need to normalize it using the components of the metric.
+
+- [ ] Do isothermal calculation in spherical polar coordinates, use both general mover and spherical polar mover (original) to show that you get the same moments in each case
+
+- [ ] Adjust the logic after implementing acceleration--- if step is small compared to size of the zone, don't want to take thousand steps. Will still use dmin in acceleration routine.
+
+    - Few things to change on general mover
+    - Currently just does verlet step
+        - Doing an rk4 step may be better?
+        - Start off by using verlet step, but may want to replace with rk4 or adaptive step size later on.
+    - Concentrate on doing acceleration piece first. But, there are a lot of things using the general mover that would be useful.
+
+
 Group meeting
 ---
 
