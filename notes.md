@@ -3,7 +3,15 @@
 
 - [X] Issue with update moments in general mover is that the k vector is not nomralized. Need to normalize it using the components of the metric.
 
-- [ ] Do isothermal calculation in spherical polar coordinates, use both general mover and spherical polar mover (original) to show that you get the same moments in each case
+- [X] Do isothermal calculation in spherical polar coordinates, use both general mover and spherical polar mover (original) to show that you get the same moments in each case
+
+- [ ] Add `x1rat` parameter to improve bin spacing in log space
+
+- [ ] Test spherical polar, determine good number of photons, then run both spherical polar and general mover
+
+- [ ] Adapt plotting code to show both generalmover and sphericalpolarmover moments on same plot for comparison
+
+- [ ] Read Robitaille paper (and Min reference) on implementing acceleration scheme 
 
 - [ ] Adjust the logic after implementing acceleration--- if step is small compared to size of the zone, don't want to take thousand steps. Will still use dmin in acceleration routine.
 
