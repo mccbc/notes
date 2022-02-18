@@ -5,11 +5,11 @@
 
 - [X] Do isothermal calculation in spherical polar coordinates, use both general mover and spherical polar mover (original) to show that you get the same moments in each case
 
-- [ ] Add `x1rat` parameter to improve bin spacing in log space
+- [X] Add `x1rat` parameter to improve bin spacing in log space
 
-- [ ] Test spherical polar, determine good number of photons, then run both spherical polar and general mover
+- [X] Remove print statements now that norm is confirmed, test spherical polar, determine good number of photons, then run both spherical polar and general mover
 
-- [ ] Adapt plotting code to show both generalmover and sphericalpolarmover moments on same plot for comparison
+- [X] Compare generalmover and sphericalpolarmover moments
 
 - [ ] Read Robitaille paper (and Min reference) on implementing acceleration scheme 
 
