@@ -1,3 +1,15 @@
+ - [ ] Run spherical polar test problem with a reflecting exterior boundary in r, constant density. The energy density should reflect the equilibrium temperature, E * c = aT^4 * c which is roughly 2 * 10^16 for T=10^5 K
+
+
+**Random idea**
+
+ - Scientific expertise as a branching diagram
+     - fundamentals in the middle branching out into specific sub-areas
+     - Increasing radius from center indicates depth of knowledge
+         - Circles of constant radius to indicate elementary, middle, high school, university classes, graduate classes, research projects, published papers at the very edge
+     - Imagine having a highlighter that will run out of ink at some point. Can either have broad knowledge or highly specific in one area.
+
+
 2022 02 15
 ---
 
