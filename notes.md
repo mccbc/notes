@@ -1,4 +1,4 @@
- - [ ] Run spherical polar test problem with a reflecting exterior boundary in r, constant density. The energy density should reflect the equilibrium temperature, E * c = aT^4 * c which is roughly 2 * 10^16 for T=10^5 K
+ - [X] Run spherical polar test problem with a reflecting exterior boundary in r, constant density. The energy density should reflect the equilibrium temperature, E * c = aT^4 * c which is roughly 2 * 10^16 for T=10^5 K
 
 
 **Random idea**
