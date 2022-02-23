@@ -1,5 +1,10 @@
- - [X] Run spherical polar test problem with a reflecting exterior boundary in r, constant density. The energy density should reflect the equilibrium temperature, E * c = aT^4 * c which is roughly 2 * 10^16 for T=10^5 K
-
+Notes for Thursday Meeting
+---
+ - Tried to run spherical polar test problem with a reflecting exterior boundary in r, but photons weren't being absorbed fast enough
+     - Ran indefinitely at tau=1 and constant density (`constdens = true`, `tau=1`)
+     - The energy density should reflect the equilibrium temperature, E * c = aT^4 * c which is roughly 2 * 10^16 for T=10^5 K
+- Removed erroneous factors of 10 in plotting scripts, found that the general mover converges to Er ~ 2x10^16, but spherical polar mover is at 10^15 for some reason.
+    - Not sure why they aren't the same. Spherical polar version should be correct too.
 
 **Random idea**
 
