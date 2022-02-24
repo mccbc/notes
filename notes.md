@@ -1,10 +1,59 @@
+2022 02 24
+---
+
+ - [ ] Do a general mover / spherical mover comparison with higher statistics --- divide the two solutions, see if it's exactly 20 across the board. May indicate the cause if it's not an exact factor
+
+- [ ] Do a single photon, one process - are the dl's you're getting for the photon crossing the zones (dl comparable to the zone width)
+     - Make sure it's accumulating
+     - Check tauremaining at every step
+     - What is dl * local chi?
+     - Make sure each time it's calling updatemoments with the right dl
+
+What are all the possible options where something is going wrong?
+ Temperature
+ Optical depth
+ Mean free path
+
+ - [ ] Phil's idea: set up optically thin spherical problem, send photons from the center to the edge. Make sure we get R as their path length. 
+
+
+
 Notes for Thursday Meeting
 ---
+
+**Robitaille Paper**
+
+ - MRW: prevents photons getting stuck in optically thick regions
+ - PDA: allows temps to be calculated in regions with very few photons
+ - Simplifications seem pretty rudimentary
+     - Ex: replacing integrals in equation 9 with a frequency independent constant to get equation 14, **dust emission coefficient in optically thick region**
+ - D for diffusion coefficient --- is the same whether or not scattering is included.
+ - Simplifications also give standard Planck mean mass absorption coefficient
+ - **Acceleration flag condition**: if the distance to the closest cell wall is greater than a few times the Rosseland mean free path, then turn on acceleration.
+     - dmin > gamma / rho / chi_R
+     - Gamma controls the balance of speed v. accuracy. Too low, then sphere for MRW is optically thin at long wavelengths and diffusion isn't applicable
+ - **Questions**:
+     - If acceleration samples from a sphere centered on the grid cell, with R_0 = closest grid wall, what if the photon escapes in a different direction? What if it ends up in the same cell after escaping that sphere? How do you propagate it to the next grid cell?
+     - Differences between this and our resonant scattering:
+         - Their diffusion is just Rosseland mean - very simple, depends on density only. Not frequency dependent, no resonant scattering, in fact not dependent on scattering at ALL.
+         - M09 use simple classical radiative diffusion in 3d, neglecting scattering altogether.
+     - To put acceleration in our code, would need to do check of dmin and MFP to determine optically thick zones. Then, sample wait time, outgoing frequency, outgoing position from our solutions.
+         - We don't yet have a good fit or CDF, so how would we do this practically?
+
+
+**Reflecting boundary**
+
  - Tried to run spherical polar test problem with a reflecting exterior boundary in r, but photons weren't being absorbed fast enough
-     - Ran indefinitely at tau=1 and constant density (`constdens = true`, `tau=1`)
+     - Read through `mc_isoth.cpp` problem generator to understand how rho and tau are set when using `constdens` flag
+     - General mover ran indefinitely at tau=1 and constant density (`constdens = true`, `tau=1`), and also for `tau=10`.
+     - Spherical polar mover took a long time to run 1000 photons, most were killed by exceeding iter of 10 million, counts are too low to see the trend
      - The energy density should reflect the equilibrium temperature, E * c = aT^4 * c which is roughly 2 * 10^16 for T=10^5 K
-- Removed erroneous factors of 10 in plotting scripts, found that the general mover converges to Er ~ 2x10^16, but spherical polar mover is at 10^15 for some reason.
+
+**Escaping Boundary**
+
+- **Without constant density:** Removed erroneous factors of 10 in plotting scripts, found that the general mover converges to Er ~ 2x10^16, but spherical polar mover is at 10^15 for some reason.
     - Not sure why they aren't the same. Spherical polar version should be correct too.
+- **With constant density:** Energy density is different, doesn't seem to converge to aT^4 * c at all. Can't reach equilibrium bc no reflection at outer boundary?
 
 **Random idea**
 
