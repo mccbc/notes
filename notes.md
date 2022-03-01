@@ -1,7 +1,17 @@
+
+2022 02 28
+---
+
+ - Getting aborts from Athena when running on 9 cores. What's that about? it seems pretty consistent.
+
+ - set emin and emax to 0.01 and 30 with tnorm on --- this means they'll be input as dimensionless (30 kT / kT) rather than in eV. 
+
+ - In sphpolmover, either updatemoments isn't being called every time, or it's not being passed the right length. Dig into the code, print every step of a single photon, make sure the dl lengths and tauremainings are sensible. Check every function of UpdateMoments and make sure it's being called appropriately.
+
 2022 02 24
 ---
 
- - [ ] Do a general mover / spherical mover comparison with higher statistics --- divide the two solutions, see if it's exactly 20 across the board. May indicate the cause if it's not an exact factor
+ - [X] Do a general mover / spherical mover comparison with higher statistics --- divide the two solutions, see if it's exactly 20 across the board. May indicate the cause if it's not an exact factor
 
 - [ ] Do a single photon, one process - are the dl's you're getting for the photon crossing the zones (dl comparable to the zone width)
      - Make sure it's accumulating
