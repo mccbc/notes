@@ -1,4 +1,56 @@
 
+2022 03 03
+---
+
+**Lya Test Problem**
+
+ - Understand mc_lists and mc_spectra - what the structure of each is. Spectrum is just a dictionary. 
+
+ - plot_lyaspec.py - its own thing bc it's a function of the velocity, see tutorial
+
+ - Go through problem generator and take notes
+
+**Acceleration**
+
+ - Use Dijkstra's solution, integrate flux analytically. Spherically summetric outgoing.
+ - For escape time, use rejection method. Figure out a function that's bigger than that everywhere. Implement with SOMETHING, better than nothing.
+    - Forget about rollover at early times - exponential, roughly correct exponential decay. That's an analytic funcion we can directly sample. Know how to integrate and solve for t. Easy to get running, may give something that's close.
+ - Numerical recipes - rejection methods. Nice short derivation.
+
+**General Knowledge**
+
+ - Data structures - get it right first. Any algorithm or function - get it WORKING first, then worry about making it good afterwards.
+
+ - Complete redistribution: the outgoing photon does not depend on the properties of the incoming photon. Frequency of the outgoing photon, for example, is sampled from a Gaussian. This is applicable for photons in the line core, and may be a good thing to use from optical depths of ~10 to ~10^5.
+
+Notes for Thursday meeting:
+---
+
+**Cartesian**
+
+ - Looked through the lya plotting scripts in `/athena/vis/python/`
+     - Tried to run `plot_lya.py` on joined phlists, got "file not formatted as expected" error
+     - Advice for outputs and visualization?
+         - Especially in spherical case, since it seems like some of the functionality of the plotting scripts may not be applicable in spherical polar
+
+**Spherical Polar**
+
+ - Some existing code already in the problem generator to handle spherical polar lyman alpha resonance test
+     - Hardcoded escape condition is only triggered when cartesian coords are used - may be usable to set outer x1 boundary to "escape"?
+     - Update: code compiles and runs with outer x1 set to escape in spherical polar lya. But, photon movement is extremely slow (3 photons in ~15 minutes), two of which were destroyed (NaN photon, polar boundary) and one of which escaped with the following parameters:
+        - > Energy, weight: 1.63589e-11 1  
+            i: 3 -1 0  
+            x: 1e+11 0.479139 5.30226 14.4706  
+            k: 0.451694 -0.539183 -0.710813 3.33564e-11  
+            dk: 0 0 0 0  
+            stokes: 1 0 0  
+            opacity: 4.06151e-11 0  
+            User vars: 0 0 0  
+            ESCAPED  
+    - Get warnings about photon moving through polar boundary after every escaped photon.
+
+
+
 2022 02 28
 ---
 
