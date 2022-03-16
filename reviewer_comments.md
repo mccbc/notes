@@ -11,7 +11,12 @@ General comments:
 Abstract:
 
 1. The first several sentences are dense and generic, especially because the basic analytic solution has been known for decades. I suggest stating the novel aspects of your work earlier and motivating the study either through science applications or furthered understanding.
+
+    - The abstract now leads with the introduction of the novel additions to the basic analytic solution. Additional sentences outlining applications to irradiated planetary atmospheres and potential for acceleration of Monte Carlo using the time-dependent escape time distribution have been added to motivate the study through science applications.
+
 2. "Decreases slowly with line center optical depth" is too vague. I suggest adding something like "specifically (a tau0)^-1/3" as this is the intuition I want to remember.
+
+    - The specific scaling with line center optical depth has been inserted in this sentence.
 
 Section 1. Introduction:
 
