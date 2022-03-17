@@ -1,3 +1,12 @@
+2022 03 17
+---
+Task list:
+
+- [X] Plot Lya spectrum from monte carlo against H0
+    - [ ] Add Phil's core approximation
+- [ ] Do an athena run that tabulates radiation moments in the monte carlo, examine them alongside mciso results
+- [ ] 
+
 
 2022 03 03
 ---
