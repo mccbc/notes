@@ -3,9 +3,26 @@
 Task list:
 
 - [X] Plot Lya spectrum from monte carlo against H0
-    - [ ] Add Phil's core approximation
-- [ ] Do an athena run that tabulates radiation moments in the monte carlo, examine them alongside mciso results
-- [ ] 
+    - [X] Add core to line profile & do full conversion between x and sigma
+- [X] Do an athena run that tabulates radiation moments in the monte carlo 
+    - [ ] Compare against analytic solution
+- [ ] Look at compton acceleration currently in the code
+    - Advection-dependent
+    - Diffusion time c/tau, drawn sphere may move through a different cell face due to motion
+    - Remove anything that depends on beta in the current code implementation
+    - Optical depth is low enough that advection shouldn't matter. Fluid velocity may be on order the sound speed. Speed is faster than c/tau - nscatter is tau^2.
+    - Find distance to nearest cell wall - dr, r dtheta, 
+
+
+
+Plan for acceleration scheme:
+
+ - Determine what triggers acceleration. When the optical depth to the nearest cell face is larger than some value
+     - Need to get current cell face. smallest of dr, r dtheta, r sintheta dphi
+ - Draw a sphere around the photon's initial position, with radius equal to the distance to the nearest cell face
+ - Randomly sample the photon's final position on the surface of the sphere, and also sample a random exit direction vector
+ - Sample the photon's outgoing frequency using the distribution
+ - Determine change in momentum (radiation force) by considering the initial position, final position, and change in photon frequency (momentum)
 
 
 2022 03 03
