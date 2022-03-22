@@ -12,21 +12,21 @@ Abstract:
 
 1. The first several sentences are dense and generic, especially because the basic analytic solution has been known for decades. I suggest stating the novel aspects of your work earlier and motivating the study either through science applications or furthered understanding.
 
-    - The abstract now leads with the introduction of the novel additions to the basic analytic solution. Additional sentences outlining applications and potential for acceleration of Monte Carlo using the time-dependent escape time distribution have been added to motivate the study through science applications.
+    - **The abstract now leads with the introduction of the novel additions to the basic analytic solution. Additional sentences outlining applications and potential for acceleration of Monte Carlo using the time-dependent escape time distribution have been added to motivate the study through science applications.**
 
 2. "Decreases slowly with line center optical depth" is too vague. I suggest adding something like "specifically (a tau0)^-1/3" as this is the intuition I want to remember.
 
-    - The specific scaling with line center optical depth has been inserted in this sentence.
+    - **The specific scaling with line center optical depth has been inserted in this sentence.**
 
 Section 1. Introduction:
 
 1. Please include a few high-level references, e.g. in the first paragraph you can use Dijkstra (2019; Saas-Fee 46, 1). Also, statements like "Lya may ionize atoms...drive an outflow" probably need citations.
 
-    - A citation of Dijkstra (2019; Saas-Fee 46, 1) has been added after first few sentences. Added reference to Bourrier (2018; A&A 620, A147) after statement about outflow.
+    - **A citation of Dijkstra (2019; Saas-Fee 46, 1) has been added after first few sentences. Added reference to Bourrier (2018; A&A 620, A147) after statement about outflow.**
 
 2. Given that your work is quite general, please mention that Lya radiation transport is an active area of study for a wide range of astrophysical settings, i.e. including planets, stars, galaxies, and cosmology.
 
-    - The first paragraph of the introduction has been reorganized to address the general study of Lya radiation transport first, and then specify that in this work we consider one of its applications to exoplanet atmospheres. A sentence has been added mentioning the general areas referenced in this comment.
+    - **The first paragraph of the introduction has been reorganized to address the general study of Lya radiation transport first, and then specify that in this work we consider one of its applications to exoplanet atmospheres. A sentence has been added mentioning the general areas referenced in this comment.**
 
 3. Please add more motivation for studying time-dependent sources in the context of Lya (pulse, point-like if you want to be specific). For example, atmospheric flare ups, quasar variability, gamma-ray bursts, cosmic expansion, Lya radiation pressure, etc. Potentially relevant references: Roy, Shu, Fang (2010; ApJ, 716, 604), Xu, Wu, Fang (2011; MNRAS, 418, 2), Smith et al. (2018; MNRAS, 479, 2065) etc. present time-dependence calculations.
 4. "Monte Carlo methods directly coupled with fluid dynamics" should cite Smith, Bromm, Loeb (2017; MNRAS, 464, 2963, see also 2016; MNRAS, 460, 3143). Also, potentially relevant is the local sub-grid model of Kimm et al. (2018; MNRAS, 475, 4617).

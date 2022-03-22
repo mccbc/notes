@@ -1,3 +1,25 @@
+**Recent updates**
+
+Done:
+
+ - Put acceleration trigger condition in generalmover.cpp
+     - Takes minimum of distances between photon position and each cell face in each direction
+     - Checks if chi * dmin > tauacc
+     - **Behavior:** Tested on a single photon, single process. Photon shows some repeating behavior in r (probably moving through r boundaries)
+         - Gets centered on a line of cells in r, accel would trigger whenever it approaches the middle of the cell
+         - Otherwise, too close to phi/theta boundary yet travelling radially out in r
+         - Only 1 scattering with this photon
+ - Found issue slowing down lya transfer --- `general_mover` flag vs `generalmover`
+     - Can now run 1m photons in 41s with stepsize = 1.e-1 and varystep true
+     - But, lose the double-peaked spectrum. Is general mover compatible with resonant scattering?
+
+Questions:
+
+ - What to do about acceleration flag?
+     - Seems to always try to turn on compton scattering, even when "coherent_scattering" flag is set
+     - `montecarloblockcpp:282`
+
+
 2022 03 17
 ---
 Task list:
@@ -6,7 +28,7 @@ Task list:
     - [X] Add core to line profile & do full conversion between x and sigma
 - [X] Do an athena run that tabulates radiation moments in the monte carlo 
     - [ ] Compare against analytic solution
-- [ ] Look at compton acceleration currently in the code
+- [X] Look at compton acceleration currently in the code
     - Advection-dependent
     - Diffusion time c/tau, drawn sphere may move through a different cell face due to motion
     - Remove anything that depends on beta in the current code implementation
@@ -17,8 +39,8 @@ Task list:
 
 Plan for acceleration scheme:
 
- - Determine what triggers acceleration. When the optical depth to the nearest cell face is larger than some value
-     - Need to get current cell face. smallest of dr, r dtheta, r sintheta dphi
+ - Determine what triggers acceleration. When the optical depth to the nearest cell face is larger than some value (**DONE**)
+     - Need to get current cell face. smallest of dr, r dtheta, r sintheta dphi (**DONE**)
  - Draw a sphere around the photon's initial position, with radius equal to the distance to the nearest cell face
  - Randomly sample the photon's final position on the surface of the sphere, and also sample a random exit direction vector
  - Sample the photon's outgoing frequency using the distribution
