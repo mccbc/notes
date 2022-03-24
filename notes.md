@@ -12,12 +12,19 @@ Done:
  - Found issue slowing down lya transfer --- `general_mover` flag vs `generalmover`
      - Can now run 1m photons in 41s with stepsize = 1.e-1 and varystep true
      - But, lose the double-peaked spectrum. Is general mover compatible with resonant scattering?
+         - **Answer**: general mover needs k vector to be normalized before and after scattering
+ - Fixed resonant scattering in the general mover. Added support to ScatterResonanceLine for spherical polar geometry & general mover, tested, and it works!
+
+     - Photons initially appeared to be only scattering once before exiting the sphere, for tau=1e4. If I increased it to 1e7, the line broadened a bit and we got ~20 scatterings. But, nscat is definitely not proportional to tau, so something was wrong.
+     - Opacities were reasonable, all ~1e7 at tau=1e4 for both generalmover and no generalmover
+     - **ANSWER**: It was the normalization causing the issue. Making sure the k vectors are normalized fixes the scattering.
 
 Questions:
 
  - What to do about acceleration flag?
      - Seems to always try to turn on compton scattering, even when "coherent_scattering" flag is set
      - `montecarloblockcpp:282`
+
 
 
 2022 03 17
@@ -33,7 +40,8 @@ Task list:
     - Diffusion time c/tau, drawn sphere may move through a different cell face due to motion
     - Remove anything that depends on beta in the current code implementation
     - Optical depth is low enough that advection shouldn't matter. Fluid velocity may be on order the sound speed. Speed is faster than c/tau - nscatter is tau^2.
-    - Find distance to nearest cell wall - dr, r dtheta, 
+    - Find distance to nearest cell wall - dr, r dtheta, (**DONE**)
+- [ ] Re-normalize the k-vector before and after scattering within ResonantScattering function to fix generalmover scattering issue
 
 
 
