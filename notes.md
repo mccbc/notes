@@ -1,3 +1,7 @@
+
+ - [ ] Look at how Thompson scattering is done in the code - close to what we want to do with lya
+
+
 **Recent updates**
 
 Done:

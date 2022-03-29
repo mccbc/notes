@@ -29,6 +29,9 @@ Section 1. Introduction:
     - **The first paragraph of the introduction has been reorganized to address the general study of Lya radiation transport first, and then specify that in this work we consider one of its applications to exoplanet atmospheres. A sentence has been added mentioning the general areas referenced in this comment.**
 
 3. Please add more motivation for studying time-dependent sources in the context of Lya (pulse, point-like if you want to be specific). For example, atmospheric flare ups, quasar variability, gamma-ray bursts, cosmic expansion, Lya radiation pressure, etc. Potentially relevant references: Roy, Shu, Fang (2010; ApJ, 716, 604), Xu, Wu, Fang (2011; MNRAS, 418, 2), Smith et al. (2018; MNRAS, 479, 2065) etc. present time-dependence calculations.
+
+    - **A paragraph discussing the motivation of the time-dependent problem has been added to the introduction. References to Roy, Shu, Fang (2010; ApJ, 716, 604), and Xu, Wu, Fang (2011; MNRAS, 418, 2) have been added with mention of their applications. The reference to Smith et al. (2018; MNRAS, 479, 2065) regarding their time-dependent hybrid diffusion method is included in the conclusions section.**
+
 4. "Monte Carlo methods directly coupled with fluid dynamics" should cite Smith, Bromm, Loeb (2017; MNRAS, 464, 2963, see also 2016; MNRAS, 460, 3143). Also, potentially relevant is the local sub-grid model of Kimm et al. (2018; MNRAS, 475, 4617).
 5. Number of scatterings proportional to tau0 should cite Adams (1972; ApJ, 174, 439).
 6. "A method that can accurately characterize..." should mention dynamical core-skipping is used for MCRT codes. It is fine to argue we should still explore others, or that intuition alone is sufficient motivation, but as written this sounds like this is a completely unsolved problem.
