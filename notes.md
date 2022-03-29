@@ -1,5 +1,5 @@
 
- - [ ] Look at how Thompson scattering is done in the code - close to what we want to do with lya
+ - [X] Look at how Thompson scattering is done in the code - close to what we want to do with lya
 
 
 **Recent updates**
@@ -28,6 +28,7 @@ Questions:
  - What to do about acceleration flag?
      - Seems to always try to turn on compton scattering, even when "coherent_scattering" flag is set
      - `montecarloblockcpp:282`
+     - **ANSWER**: When `acceleration` flag is enabled, turn on acceleration. Then, check `SCATTER_METH` to determine what logic to use rather than hardcoding in Compton.
 
 
 
