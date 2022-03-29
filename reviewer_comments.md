@@ -5,7 +5,13 @@ This article entitled "Resonant Scattering in a Uniform Sphere with Large Optica
 General comments:
 
 1. The title may be too general as it does not actually mention the main novel aspects of the work and most people think that resonant scattering in a sphere is a solved problem. I suggest revising to include key words such as (semi-)analytic, BC corrections, or an impulse source, but I leave this up to the authors.
+
+    - **The title has been changed to include the keywords relating to the novel aspects of the work, rather than a general description of the problem. Now includes "Boundary Conditions", "Time Dependence", and "Semi-Analytic Solution".**
+
 2. I realize there may be a difference in style across fields, but I recommend more thorough citations of previous works. This is helpful for readers to better connect to other fields and appreciate the context of your results.
+
+    - **References to several additional papers recommended by the reviewer have been included as indicated.**
+
 3. Very minor but I suggest removing redundant significant figures, i.e. replace xs = 0.0 with xs = 0 and tau0 = 1.0 x 10^7 with tau0 = 10^7. This is frequent and distracting.
 
 Abstract:
@@ -33,12 +39,33 @@ Section 1. Introduction:
     - **A paragraph discussing the motivation of the time-dependent problem has been added to the introduction. References to Roy, Shu, Fang (2010; ApJ, 716, 604), and Xu, Wu, Fang (2011; MNRAS, 418, 2) have been added with mention of their applications. The reference to Smith et al. (2018; MNRAS, 479, 2065) regarding their time-dependent hybrid diffusion method is included in the conclusions section.**
 
 4. "Monte Carlo methods directly coupled with fluid dynamics" should cite Smith, Bromm, Loeb (2017; MNRAS, 464, 2963, see also 2016; MNRAS, 460, 3143). Also, potentially relevant is the local sub-grid model of Kimm et al. (2018; MNRAS, 475, 4617).
+
+    - **Citation to Smith, Bromm, Loeb (2017; MNRAS 464, 2963) added after the statement about MCRT coupled with fluid dynamics. [The other two references don't seem to add much. 2016 paper just focuses on a similar methodology applied to CR7, and the 2018 paper does the same thing but by coupling RASCAS MCRT code to RAMSES.]**
+
 5. Number of scatterings proportional to tau0 should cite Adams (1972; ApJ, 174, 439).
+
+    - **This reference has been inserted here.**
+
 6. "A method that can accurately characterize..." should mention dynamical core-skipping is used for MCRT codes. It is fine to argue we should still explore others, or that intuition alone is sufficient motivation, but as written this sounds like this is a completely unsolved problem.
+
+    - **Elaboration on this point is present in S4.2 Impulsive Source. The statement on this topic in the introduction does not necessarily imply that such a method does not exist, merely that it has the potential to accelerate the calculation.** 
+
 7. Several places use "out on the wings" or similar, which should instead use the word "in" (see also after equation 3 and end of section 2 etc.).
+
+    - **This phrasing has been corrected in each instance.**
+
 8. "To our knowledge...never been quantified" should be updated to reflect recent studies that provide insights about related concepts. For example, Lao & Smith (2020; MNRAS, 497, 3925) use a parametrized boundary condition to incorporate some flexibility and Tomaselli & Ferrara (2021; MNRAS, 504, 89; equation A18) explore an alternative flux-free boundary condition. While this is qualitatively different than your approach and does not quantify errors, it is worth mentioning.
+
+    - **TODO:** **[Lao & Smith 2020's figure 12 demonstrate the exact disrepancy our solution corrects for, so this is not a good example of a boundary condition that improves upon Harrington.]**
+    - **[Tomaselli & Ferrara 2021 use a flux-free boundary condition. See eq A18 in their appendix. It's not clear why this is worth mentioning, as it's just another incorrect boundary condition.]**
+
 9. In the last paragraph, please mention (after the Dijkstra sentence) that Lao & Smith (2020) generalize the slab and sphere solutions to arbitrary power-law density and emissivity profiles.
+
+    - **This reference has been added along with a short description of the work presented. [Is this still Harrington 1973 BC? Review BC appendix to see if we can keep the statement "But each of these works uses the incorrect BC"] ** 
+
 10. Please look at and cite Seon & Kim (2020; ApJS, 250, 9) in a relevant context. You may find Appendices B and C interesting (and text/figures for section 3.1). You may also find the exploration of dust in Appendix A3 of Tomaselli & Ferrara (2021) to be interesting and relevant.
+
+    - **TODO:** **[May be another paper to cite where the analytic Neufeld 1990 solution fails & has a noticeable discrepancy at the peak (Figure 1). Figure 2 shows a solution that's incorrect in a brand new way. Does slightly better for T=10 K, low temperature. Not as much of a discrepancy at low optical depths. Seems like from Eq. C4 this is just the same C17 equation from Dijkstra.]**
 
 Section 2. Steady-State Solution:
 
