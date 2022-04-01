@@ -1,3 +1,15 @@
+
+
+
+
+Dijkstra and Loeb 2008
+
+ - lya outflows around__ galaxies
+    - Compares rad pressure ot gravity, talks about ionizing radiaiton vs lya for radiation pressure
+    - Read this - a good model for force balancing in exoplanet atmospheres
+    -   Analytic estimates to motivate parameters you're putting in the hydro calculation
+
+
 **To do for March 31:**
 
  - [ ] Make acceleration flag choose what type of accel to use based on scattering type
@@ -8,6 +20,9 @@
 **Questions**
 
  - Why isn't the scattering method flag being set correctly? `photonmover.cpp:31` gets a flag from `montecarloblock.cpp:244`, which reads it in from the athinput file through `montecarlo.cpp:263`. But, print statement seems to show that the flag is 0, not 5 as it should be for resonance transfer.
+     - Create a flag 
+     - Set a flag 
+     - Move scattering_meth = GetScattering... up above photon mover method DONE
 
 **Done**
 

@@ -56,7 +56,7 @@ Section 1. Introduction:
 
 8. "To our knowledge...never been quantified" should be updated to reflect recent studies that provide insights about related concepts. For example, Lao & Smith (2020; MNRAS, 497, 3925) use a parametrized boundary condition to incorporate some flexibility and Tomaselli & Ferrara (2021; MNRAS, 504, 89; equation A18) explore an alternative flux-free boundary condition. While this is qualitatively different than your approach and does not quantify errors, it is worth mentioning.
 
-    - **TODO:** **[Lao & Smith 2020's figure 12 demonstrate the exact disrepancy our solution corrects for, so this is not a good example of a boundary condition that improves upon Harrington.]**
+    - **TODO:** **[Lao & Smith 2020's figure 12 demonstrate the exact disrepancy our solution corrects for, so this is not a good example of a boundary condition that improves upon Harrington. Reference equation 36 --- same boundary condition as harrington.]**
     - **[Tomaselli & Ferrara 2021 use a flux-free boundary condition. See eq A18 in their appendix. It's not clear why this is worth mentioning, as it's just another incorrect boundary condition.]**
 
 9. In the last paragraph, please mention (after the Dijkstra sentence) that Lao & Smith (2020) generalize the slab and sphere solutions to arbitrary power-law density and emissivity profiles.
@@ -71,7 +71,7 @@ Section 2. Steady-State Solution:
 
 1. This is a matter of taste (optional), but I find the notation is greatly simplified by moving to dimensionless units in all variables, e.g. factors of k/Delta go away. Also, modern papers often use the conventions of tau0 = k * R rather than tau0 = k * R / sqrt(pi) Delta.
 
-    - **TODO: We'll leave this as-is.**
+    - **No**
 
 2. After equation 12: Do you mean "Equation (11) will be shown"?
 
@@ -80,7 +80,7 @@ Section 2. Steady-State Solution:
 3. After equation 18: Please mention roughly how many points are required for convergence. Can a non-uniform lattice be used to optimize computation? Can this approach be practically extended to non-uniform density, e.g. as a system of equations with interior and boundary conditions?
 
      - **The number of points and value of \sigma_{\rm max} we used in our calculations have been included in this paragraph. The calculation is fast enough that it doesn't need to be optimized with a non-uniform lattice --- additionally, the grid is already set up in \sigma units, rather than x.**
-     - **TODO: [Unsure about non-uniform density calculation. Seems difficult.]**
+     - **TODO: [Unsure about non-uniform density calculation. Seems difficult.] Ohter density profiles are beyond the scope of this work.**
 
 4. Figure 1: Please provide brief summaries in the caption (or in the labels) to remind readers skimming this, e.g. H0 = fiducial solution, Hd = divergent solution, Hbc = our additional correction accounting for more self-consistent BCs. Finally, people may be more used to seeing J (rather than H) so please point out when/if there is are important differences for interpreting results.
 
@@ -98,10 +98,12 @@ Section 2. Steady-State Solution:
 7. Fig. 2: Why are the yellow curves V shaped at line center when the standard is more U shaped? Is this due to plotting resolution or not using the wing approximation for the Voigt function? This is more apparent in figure 3, so it is worth explaining this feature properly.
 
     - **The plotting resolution in the core is intentionally low since the solutions don't work in this frequency regime anyway. The submitted version of Figure 1 interpolated over x values in the core, leading to the curved shape. To avoid confusion, this interpolation has been turned off and Figure 1 has been re-plotted. The "V" shape is due to the low number of points in the core. TODO: [Does it still need explanation if I've changed all the figures to not use interpolation? I think there's no longer a source of confusion and the reader will be able to tell that it's just a low number of points.]**
+    - TODO: Add a statement *in the text*, paragraph discussing Fig 1 mentioning that the reason for the v shape is low number of points, we chose not to do high res there bc the Monte Carlo does include doppler core but our solution doesn't solve for it
 
 8. Figure 3: It looks like the MC error bars are not representative of the true uncertainty, i.e. small compared to the variation between neighboring bins. Can you fix or comment on this, e.g. is this the Poisson statistical uncertainty?
     - **TODO: [What do we think about this?]**
-
+    - Linear error can't be shown in log space the same way. Review Phil's note --- should be log10(P) +- 0.43 \delta / P, where \delta is the linear error
+    - Also: zoom in on errorbars in linear plots. Do theys how up? Is there MC variation outside of those rerors?
 Section 3. Time-Dependent Diffusion
 
 1. Figure 5: Perhaps a combination of different colors and line styles (in addition to line thickness) would make the trends clearer.
