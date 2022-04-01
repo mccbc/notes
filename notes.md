@@ -1,10 +1,22 @@
+**To do for March 31:**
 
- - [X] Look at how Thompson scattering is done in the code - close to what we want to do with lya
+ - [ ] Make acceleration flag choose what type of accel to use based on scattering type
+     - Attempt made in `photonmover.cpp:31`. Read in scattering method and turn off compton if scattering is resonance. Then, we may need additional logic...
+ - [ ] Add spherical position and direction vector sampling - uniform dist on the sphere
+     - Currently writing this in general mover, but I get the feeling this should be in its own MRWAcceleration function. Can share with the existing compton one?
+
+**Questions**
+
+ - Why isn't the scattering method flag being set correctly? `photonmover.cpp:31` gets a flag from `montecarloblock.cpp:244`, which reads it in from the athinput file through `montecarlo.cpp:263`. But, print statement seems to show that the flag is 0, not 5 as it should be for resonance transfer.
+
+**Done**
+
+ - [X] Paper edits up to section 2
+     -  Some questions to still be addressed - look through todo notes
+ - [X] Look at how compton scattering acceleration is done in the code - close to what we want to do with lya
 
 
-**Recent updates**
-
-Done:
+**Previous Updates**
 
  - Put acceleration trigger condition in generalmover.cpp
      - Takes minimum of distances between photon position and each cell face in each direction

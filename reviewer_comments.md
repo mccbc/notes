@@ -70,13 +70,37 @@ Section 1. Introduction:
 Section 2. Steady-State Solution:
 
 1. This is a matter of taste (optional), but I find the notation is greatly simplified by moving to dimensionless units in all variables, e.g. factors of k/Delta go away. Also, modern papers often use the conventions of tau0 = k * R rather than tau0 = k * R / sqrt(pi) Delta.
+
+    - **TODO: We'll leave this as-is.**
+
 2. After equation 12: Do you mean "Equation (11) will be shown"?
+
+    - **Yes. Equation 12 is evaluated at the surface, so it doesn't make sense to talk about its behavior at r=0. This has been corrected.**
+
 3. After equation 18: Please mention roughly how many points are required for convergence. Can a non-uniform lattice be used to optimize computation? Can this approach be practically extended to non-uniform density, e.g. as a system of equations with interior and boundary conditions?
+
+     - **The number of points and value of \sigma_{\rm max} we used in our calculations have been included in this paragraph. The calculation is fast enough that it doesn't need to be optimized with a non-uniform lattice --- additionally, the grid is already set up in \sigma units, rather than x.**
+     - **TODO: [Unsure about non-uniform density calculation. Seems difficult.]**
+
 4. Figure 1: Please provide brief summaries in the caption (or in the labels) to remind readers skimming this, e.g. H0 = fiducial solution, Hd = divergent solution, Hbc = our additional correction accounting for more self-consistent BCs. Finally, people may be more used to seeing J (rather than H) so please point out when/if there is are important differences for interpreting results.
+
+    - **The mentioned labels have been added to the captions Figure 1. The legend of Figure 1 has been changed to match the format used in the other figures, i.e. H_0 + H_{bc} rather than H_{0+bc}. The tick labels on the y-axis of the log-scale plot have been changed to 10^(number) format to be consistent with the other figures in the paper.**
+    - **The last point regarding H vs. J should be self-explanatory from our equations and their conversion to escape probabilities (see Eq 22).**
+
 5. End of Section 2.1: Perhaps it is useful to emphasize that the BC failure occurs before the spatial and frequency diffusion approximations. For example, it is known that the traditional solution is accurate for atua0 > 10^3 (i.e. atau0^1/3 >> 1), but several things may go wrong as you reach atau0 < 1. Do you have further insights about the order of failures?
+
+     - **TODO: [Personally I think we already address this with what's currently in that paragraph (line 139)]**.
+
 6. In my opinion it is more helpful to think in terms of atau0 rather than tau0. Perhaps you can periodically remind the reader that T = 10^4 K leads to atau0 = ?, e.g. in the caption of Fig. 1.
+
+    - **A sentence mentioning the value of atau0 has been added in the caption of Figure 1. Since we use the same temperature throughout the paper and the optical depth changes only by factors of 10, it is easy for the reader to scale this value for the other plots at different optical depths, so we will not repeat it in every caption.**
+
 7. Fig. 2: Why are the yellow curves V shaped at line center when the standard is more U shaped? Is this due to plotting resolution or not using the wing approximation for the Voigt function? This is more apparent in figure 3, so it is worth explaining this feature properly.
+
+    - **The plotting resolution in the core is intentionally low since the solutions don't work in this frequency regime anyway. The submitted version of Figure 1 interpolated over x values in the core, leading to the curved shape. To avoid confusion, this interpolation has been turned off and Figure 1 has been re-plotted. The "V" shape is due to the low number of points in the core. TODO: [Does it still need explanation if I've changed all the figures to not use interpolation? I think there's no longer a source of confusion and the reader will be able to tell that it's just a low number of points.]**
+
 8. Figure 3: It looks like the MC error bars are not representative of the true uncertainty, i.e. small compared to the variation between neighboring bins. Can you fix or comment on this, e.g. is this the Poisson statistical uncertainty?
+    - **TODO: [What do we think about this?]**
 
 Section 3. Time-Dependent Diffusion
 

@@ -21,24 +21,11 @@
 ### Citeable Results
 *A list of citeable results in the paper*
 
- - A general expression for arbitrary density profiles in spherical geometry cannot be provided because the eigenfunction expansion in coupoled to the spatial dependence of the absorption coefficient
+ - A general expression for arbitrary density profiles in spherical geometry cannot be provided because the eigenfunction expansion is coupled to the spatial dependence of the absorption coefficient
+ - Generalize sphere and slab solutions to arbitrary power-law density and emissivity profiles
 
-### Derivations
-*Derivations of any critical equations that appear in the paper*
-
- - 
 
 ### Discussion and Concerns
 *Are there any red flags?*
 
  - Figure 12 demonstrates the exact discrepancy at the peak of the spectrum that our solution corrects for.
-
-### Personal Relevance
-*Place the work into a familiar context. How is the discussion in the paper related to your own research interests and experience?*
-
- - 
-
-### Summary
-*Reread the abstract, and offer summarizing commentary.*
-
- - 
