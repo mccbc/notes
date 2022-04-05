@@ -1,19 +1,18 @@
+**To do:**
 
-
-
-
-Dijkstra and Loeb 2008
-
- - lya outflows around__ galaxies
-    - Compares rad pressure ot gravity, talks about ionizing radiaiton vs lya for radiation pressure
-    - Read this - a good model for force balancing in exoplanet atmospheres
-    -   Analytic estimates to motivate parameters you're putting in the hydro calculation
-
-
-**To do for March 31:**
-
+ - [ ] Try logscale errorbars on P(x) plots for paper
+ - [ ] Edits to paper:
+     - Section 3, section 4, conclusions
+ - [ ] Read Dijkstra and Loeb 2008
+     - lya outflows around galaxies
+     - Compares rad pressure to gravity, talks about ionizing radiaiton vs lya for radiation pressure
+     - a good model for force balancing in exoplanet atmospheres
+     -   Analytic estimates to motivate parameters you're putting in the hydro calculation
  - [ ] Make acceleration flag choose what type of accel to use based on scattering type
-     - Attempt made in `photonmover.cpp:31`. Read in scattering method and turn off compton if scattering is resonance. Then, we may need additional logic...
+     - Do this in MRWAcceleration
+     - Scattering flag is now set before photon mover is assigned
+     - Finish debugging this
+ - [ ] Move acceleration code in generalmover to MRWAcceleration, only turn on if `acceleration` flag is set and scattering method is resonance
  - [ ] Add spherical position and direction vector sampling - uniform dist on the sphere
      - Currently writing this in general mover, but I get the feeling this should be in its own MRWAcceleration function. Can share with the existing compton one?
 
@@ -24,15 +23,15 @@ Dijkstra and Loeb 2008
      - Set a flag 
      - Move scattering_meth = GetScattering... up above photon mover method DONE
 
-**Done**
+**Recently Done**
 
- - [X] Paper edits up to section 2
-     -  Some questions to still be addressed - look through todo notes
- - [X] Look at how compton scattering acceleration is done in the code - close to what we want to do with lya
-
+ - Moved scattering method update call to be above the photon mover, so the mover has the correct flag to use for scattering when determining what acceleration function to use
 
 **Previous Updates**
 
+ - Paper edits up to section 2
+     -  Some questions to still be addressed - look through todo notes
+ - Looked at how compton scattering acceleration is done in the code - close to what we want to do with lya
  - Put acceleration trigger condition in generalmover.cpp
      - Takes minimum of distances between photon position and each cell face in each direction
      - Checks if chi * dmin > tauacc
