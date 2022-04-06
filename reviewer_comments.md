@@ -79,17 +79,17 @@ Section 2. Steady-State Solution:
 
 3. After equation 18: Please mention roughly how many points are required for convergence. Can a non-uniform lattice be used to optimize computation? Can this approach be practically extended to non-uniform density, e.g. as a system of equations with interior and boundary conditions?
 
-     - **The number of points and value of \sigma_{\rm max} we used in our calculations have been included in this paragraph. The calculation is fast enough that it doesn't need to be optimized with a non-uniform lattice --- additionally, the grid is already set up in \sigma units, rather than x.**
-     - **TODO: [Unsure about non-uniform density calculation. Seems difficult.] Ohter density profiles are beyond the scope of this work.**
+     - **The number of points and value of \sigma_{\rm max} we used in our calculations have been included in this paragraph. The calculation is trivially fast with a uniform lattice. Though a non-uniform lattice would certainly perform better, it is simpler to use a uniform grid.**
+     - **Other density profiles are beyond the scope of this work.**
 
 4. Figure 1: Please provide brief summaries in the caption (or in the labels) to remind readers skimming this, e.g. H0 = fiducial solution, Hd = divergent solution, Hbc = our additional correction accounting for more self-consistent BCs. Finally, people may be more used to seeing J (rather than H) so please point out when/if there is are important differences for interpreting results.
 
     - **The mentioned labels have been added to the captions Figure 1. The legend of Figure 1 has been changed to match the format used in the other figures, i.e. H_0 + H_{bc} rather than H_{0+bc}. The tick labels on the y-axis of the log-scale plot have been changed to 10^(number) format to be consistent with the other figures in the paper.**
-    - **The last point regarding H vs. J should be self-explanatory from our equations and their conversion to escape probabilities (see Eq 22).**
+    - **The last point regarding H vs. J should be self-explanatory from our equations and their conversion to escape probabilities (see Eq 22). Also, J=0 at the surface for the fiducial solution, so this would not be useful to plot.**
 
 5. End of Section 2.1: Perhaps it is useful to emphasize that the BC failure occurs before the spatial and frequency diffusion approximations. For example, it is known that the traditional solution is accurate for atua0 > 10^3 (i.e. atau0^1/3 >> 1), but several things may go wrong as you reach atau0 < 1. Do you have further insights about the order of failures?
 
-     - **TODO: [Personally I think we already address this with what's currently in that paragraph (line 139)]**.
+     - **We discuss points in section 2.1 that address this. It is mentioned that photons at the peak are optically thin when atau0~1, and that our solution is only valid when the peaks of the distribution lie well outside of the Doppler core, i.e. for large tau0.**.
 
 6. In my opinion it is more helpful to think in terms of atau0 rather than tau0. Perhaps you can periodically remind the reader that T = 10^4 K leads to atau0 = ?, e.g. in the caption of Fig. 1.
 
@@ -97,41 +97,110 @@ Section 2. Steady-State Solution:
 
 7. Fig. 2: Why are the yellow curves V shaped at line center when the standard is more U shaped? Is this due to plotting resolution or not using the wing approximation for the Voigt function? This is more apparent in figure 3, so it is worth explaining this feature properly.
 
-    - **The plotting resolution in the core is intentionally low since the solutions don't work in this frequency regime anyway. The submitted version of Figure 1 interpolated over x values in the core, leading to the curved shape. To avoid confusion, this interpolation has been turned off and Figure 1 has been re-plotted. The "V" shape is due to the low number of points in the core. TODO: [Does it still need explanation if I've changed all the figures to not use interpolation? I think there's no longer a source of confusion and the reader will be able to tell that it's just a low number of points.]**
-    - TODO: Add a statement *in the text*, paragraph discussing Fig 1 mentioning that the reason for the v shape is low number of points, we chose not to do high res there bc the Monte Carlo does include doppler core but our solution doesn't solve for it
+    - **The plotting resolution in the core is intentionally low since the solutions don't use the core component of the line profile. The submitted version of Figure 1 interpolated over x values in the core, leading to the curved shape. To avoid confusion, this interpolation has been turned off and Figure 1 has been re-plotted. The "V" shape is due to the low number of points in the core, and an explanation of this has been added in the paragraph discussing Fig 1.**
 
 8. Figure 3: It looks like the MC error bars are not representative of the true uncertainty, i.e. small compared to the variation between neighboring bins. Can you fix or comment on this, e.g. is this the Poisson statistical uncertainty?
     - **TODO: [What do we think about this?]**
     - Linear error can't be shown in log space the same way. Review Phil's note --- should be log10(P) +- 0.43 \delta / P, where \delta is the linear error
     - Also: zoom in on errorbars in linear plots. Do theys how up? Is there MC variation outside of those rerors?
+
 Section 3. Time-Dependent Diffusion
 
 1. Figure 5: Perhaps a combination of different colors and line styles (in addition to line thickness) would make the trends clearer.
+
+    - **This was explored, and unfortunately adding more colors and line styles to the plot confuse the trends and make the plot more visually cluttered. As an alternative solution, the plot has been separated into three panels so that the trend can be seen more effectively while still preserving the scale and relative offset of the solutions.**
+
 2. Equation 33: Can you remind the reader about why this is the solution? (e.g. ansatz, harmonic forcing, residue calculus, etc.)
+
+    - **New text has been added referring to Equation 33 as "an approximate expression for the resonant response of the eigenfunctions".**
+
 3. End of Section 3.1: Please summarize the intuition gained here, e.g. requiring more spatial terms than time terms is a result of the diffusion (Brownian motion / heat equation) behavior?
+
+    - **The sentence has been rephrased to more clearly state that the Pnm terms converge slowly in both n and m. A reference has been added to where this is discussed most clearly in the text, which is the paragraph describing Figure 9. It is mentioned there that additional spatial terms improve the accuracy of the solutions in the line core. Additional frequency modes reduce the "noise" or "ringing" in the solution due to more perfect cancellations with lower-order terms.** **[TODO: Is there a physical reason for this, as the reviewer mentioned?]**
+
 4. Before equation 42: "hone in on the eigenvalue" Can you be more specific, e.g. do you use a bisection method? Is convergence robust/predictable, e.g. if you take too large of a window then you have two resonance values? Also, do you mean "gamma_nm can be calculated by linear interpolation from" or is it something else?
+
+    - **The method by which the eigenvalue/eigenmode is refined is described by equations 42, 43, and 44. The phrase "hone in on" has been replaced with a sentence stating that we are about to describe how we refine the value of the eigenfrequency, for clarity.**
+    - **After equation 43, a more explicit mention of the refinement procedure has been added, stating what the error of a \gamma_guess is.**
+    - **The second point about multiple resonance values in a large window is addressed in the description after Eq 47: "When sweeping through to find resonances, Equation (47) is used to set the scale of the sweep points \gamma_j to ensure no \gamma_nm are missed"**
+    - **Regarding the third point: linear interpolation is now mentioned to be explicit about the calculation of \gamma_guess.**
+
 5. Equation 44: This may not be an obvious step to the reader, e.g. there is a subtraction related to equation 33, but how is the denominator obtained, e.g. jump condition, etc.?
+
+    - **The description surrounding Eq 44 has been reworded to state how Jnm is obtained. Two points \gamma_1 and \gamma_2 are plugged in to Equation 33, the result subtracted, and Jnm solved for to obtain Eq 44.**
+
 6. Above equation 47: "The overall scale of the Jnm..." It may be good to also put this in the figure 6 caption or to normalize out parameters in the y label.
+
+    - **This has been added to the Fig 6 caption.**
+
 7. After equation 47: "as shown in Appendix B, where the WKB approximation reveals kappa ... = pi/8".
+
+    - **TODO: I'm not sure what is meant by kappa=pi/8 here, but a mention of the WKB approximation is used to describe how Eq 47 is obtained.**
+
 8. After equation 49: Please cite Adams (1975; ApJ, 201, 350) regarding the "expected atau0^1/3 scaling".
+
+    - **Added.**
+
 9. Figure 8: Please report the coefficient of the atau0^1/3 scaling used in this figure, e.g. for comparison with t_trap/t_light ~ 0.901 atau0^1/3 after equation 91 of Lao & Smith (2020). If it is much higher or lower, please explain why it differs from the Steady State solution.
+
+    - **The exact scaling of 0.51 (atau0)^(1/3) has been added. TODO: Why is this different than Lao & Smith (2020)? Ours comes from the wkb approximation, lowest order eigenfrequency at the highest optical depth. Theirs is more simple: 4pi c * R^2 * avg radiation density / 3 / L.**
+
 10. Figure 8: There are missing MC points at 10^8 and 10^9, which is understandable given the computational expense without core skipping (so this is optional). However, can you comment on how quickly the MC agrees with the analytic scaling or if the systematic excess decays slowly?
+
+    - **The excess fits well to an exponential decay with tau0, and the expected fractional error at tau0=1e9 is 0.016. A sentence has been added here discussing this.**
 
 Section 4. Discussion:
 
 1. "Laplacian form [for frequency redistribution] ... correct [for photons in the wing] where the line profile is".
+
+    - **This sentence has been rephrased according to the suggested edits.**
+
 2. Figure 9: Give some physical intuition about what fluence is in the caption, e.g. steady state spatially integrated flow of radiation at a given frequency. Mention more about behavior of SS vs partial sum vs time-integrated in the caption, e.g. briefly explain uptick and oscillations. Also, it is a bit confusing that the axis does not go to zero. Perhaps you can use the range [0,30] to show no motion near the core (took me a second to understand why it was so high).
+
+    - **A definition of the fluence has been added in the caption, as well as a reference to the equation where it is defined. We leave explanation of the behavior of the solutions to the body of the text, and reserve the caption for explaining what is shown. A note has been added explaining the starting value of the x-axis - we wish for the reader to focus on the behavior in the line wing and not be distracted by the solutions' odd behavior in the line core, where it is not expected to be correct.**
+
 3. Figure 9: I believe you can provide a closed form expression for the purple curve. Please do so if it is simple, e.g. in principle this should be very similar to the J version from equations 81 and 90 of Lao & Smith (2020).
+
+    - **This expression is our Equation 12, which is discussed in the paragraph explaining Figure 9.**
+
 4. Figure 10 Caption: Mention the analytic solution underestimates compared to MC because core scatterings are important when atau0 < 10^3.
+
+    - **This information is present in the paragraph discussing Figure 10, right before section 4 begins.**
+
 5. Last paragraph of Section 4.1: atau0 >= 1 is maybe not the right message, i.e. BC correction does help with the overall shape but the exact solution is still not in perfect agreement (i.e. order unity errors) here. It is probably fine to say atau0 >> 1 or emphasize some improvement from the standard atau0 > 10^3. (Also, it may be best to say derived spectrum J0 rather than H0 in this discussion.)
+
+    - **The atau0 >= 1 has been changed to atau0 >> 1.**
+
 6. End of Section 4.2: Core-skipping and hybrid diffusion methods "do not track the amount of time photons spend in the line core" is a bit misleading. In fact, state-of-the-art codes use dynamical core skipping that checks the uniformity in the density and velocity fields, i.e. no serious violations are made. In fact, one could estimate how many scatterings and the path lengths that are skipped. Also, rDDMC in practice requires interfacing with traditional MC for core photons for a similar reason that you would not want to apply spatial diffusion methods in optically thin gas.
+
+    - **TODO: "Do not track" has been changed to "Do not directly measure or sample". Need rephrasing?**
+
 7. End of Section 4.2: "faces of each grid cell" For your own reference the Lucy path-based estimator method is much better than tracking face fluxes (as done in Huang 2017 and Smith 2017).
+
+    - **Noted. The mention of face fluxes has been removed.**
 
 Appendix A:
 
 1. Also cite Unno (1952; PASJ, 4, 100) regarding the partial redistribution function, e.g. equation A4 (isotropic version).
+
+    - **Unno 1952 has been cited after equation A4.**
+
 2. Also cite Osterbrock (1962; ApJ, 135, 195) regarding the moments of the redistribution function, e.g. equation A7.
+
+    - **Osterbrock 1962 has been cited just before equation A7.**
+
 3. Also cite Rybicki & Dell'antonio (1994; ApJ, 427, 603) regarding a derivation of the Fokker-Planck terms (their Appendix).
+
+    - **Rybicki & Dell'antonio 1994 has been cited just before equation A13.**
+
 4. After equation A6: Do you mean "scattering cancel for p = 0"?
+
+    - **Yes! Correction made.**
+
 5. Equation A15: I suggest removing the = 0 at the end, which is misleading in my opinion. At any rate, the explanation in the text is enough.
+
+    - **Agreed. The change has been made.**
+
 6. Typo after equation B5: "By setting the denominator".
+
+    - **Yes. Correction made.**
