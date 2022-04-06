@@ -1,6 +1,5 @@
 **To do:**
 
- - [ ] Try logscale errorbars on P(x) plots for paper
  - [ ] Edits to paper:
      - Section 3, section 4, conclusions
  - [ ] Read Dijkstra and Loeb 2008
@@ -14,20 +13,25 @@
      - Finish debugging this
  - [ ] Move acceleration code in generalmover to MRWAcceleration, only turn on if `acceleration` flag is set and scattering method is resonance
  - [ ] Add spherical position and direction vector sampling - uniform dist on the sphere
-     - Currently writing this in general mover, but I get the feeling this should be in its own MRWAcceleration function. Can share with the existing compton one?
 
 **Questions**
+
+
+
+**Recently Done**
+
+ - Tried logscale errorbars on P(x) plots for paper
+     - They look very large - not sure if correct
+     - sqrt(N) is standard error, then normalized in the same way the counts are. Error bar plugged in to scatter plot was 0.43 * sqrt(N) / N
+
+ - Moved scattering method update call to be above the photon mover, so the mover has the correct flag to use for scattering when determining what acceleration function to use
+
+**Previous Updates**
 
  - Why isn't the scattering method flag being set correctly? `photonmover.cpp:31` gets a flag from `montecarloblock.cpp:244`, which reads it in from the athinput file through `montecarlo.cpp:263`. But, print statement seems to show that the flag is 0, not 5 as it should be for resonance transfer.
      - Create a flag 
      - Set a flag 
      - Move scattering_meth = GetScattering... up above photon mover method DONE
-
-**Recently Done**
-
- - Moved scattering method update call to be above the photon mover, so the mover has the correct flag to use for scattering when determining what acceleration function to use
-
-**Previous Updates**
 
  - Paper edits up to section 2
      -  Some questions to still be addressed - look through todo notes
