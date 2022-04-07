@@ -1,7 +1,20 @@
+10 points is 30% err
+100 points is 10% err
+By the 5th data point we're already at an errorbar size that's very small
+
+We're binning a function that falls strongly in x, and reporting no x error. The apparent "scatter" of the MC points outside of their Y error bars could be due to binning bias with a steeply falling function - we end up above the function in most places
+
+Do simulations with fewer and fewer photons - see if you can demonstrate wing binning behavior - compare with analytic solution
+
+We use a standard technique for the error bars on the monte carlo points - stddev is sqrt N since all the photons have the same weight - add this in the text.
+
 **To do:**
 
- - [ ] Edits to paper:
+ - [X] Edits to paper:
      - Section 3, section 4, conclusions
+ - [ ] Rework xinit plot - try introducing different line styles in the panels for clarity. Dashed and dotted in the foreground, solid in the background. Also no longer needs to be grayscale.
+ - [ ] Add physical intuition discussion of n and m modes
+ - [ ] Check what the source frequency is for figure 9 in the paper
  - [ ] Read Dijkstra and Loeb 2008
      - lya outflows around galaxies
      - Compares rad pressure to gravity, talks about ionizing radiaiton vs lya for radiation pressure

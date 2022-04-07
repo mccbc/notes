@@ -6,13 +6,15 @@ General comments:
 
 1. The title may be too general as it does not actually mention the main novel aspects of the work and most people think that resonant scattering in a sphere is a solved problem. I suggest revising to include key words such as (semi-)analytic, BC corrections, or an impulse source, but I leave this up to the authors.
 
-    - **The title has been changed to include the keywords relating to the novel aspects of the work, rather than a general description of the problem. Now includes "Boundary Conditions", "Time Dependence", and "Semi-Analytic Solution".**
+    - **The title has been changed to include the keywords relating to the novel aspects of the work, rather than a general description of the problem. Now includes "Boundary Conditions".**
 
 2. I realize there may be a difference in style across fields, but I recommend more thorough citations of previous works. This is helpful for readers to better connect to other fields and appreciate the context of your results.
 
     - **References to several additional papers recommended by the reviewer have been included as indicated.**
 
 3. Very minor but I suggest removing redundant significant figures, i.e. replace xs = 0.0 with xs = 0 and tau0 = 1.0 x 10^7 with tau0 = 10^7. This is frequent and distracting.
+
+    - **TODO:**
 
 Abstract:
 
@@ -40,7 +42,7 @@ Section 1. Introduction:
 
 4. "Monte Carlo methods directly coupled with fluid dynamics" should cite Smith, Bromm, Loeb (2017; MNRAS, 464, 2963, see also 2016; MNRAS, 460, 3143). Also, potentially relevant is the local sub-grid model of Kimm et al. (2018; MNRAS, 475, 4617).
 
-    - **Citation to Smith, Bromm, Loeb (2017; MNRAS 464, 2963) added after the statement about MCRT coupled with fluid dynamics. [The other two references don't seem to add much. 2016 paper just focuses on a similar methodology applied to CR7, and the 2018 paper does the same thing but by coupling RASCAS MCRT code to RAMSES.]**
+    - **Citation to Smith, Bromm, Loeb (2017; MNRAS 464, 2963) added after the statement about MCRT coupled with fluid dynamics. TODO: [The other two references don't seem to add much. 2016 paper just focuses on a similar methodology applied to CR7, and the 2018 paper does the same thing but by coupling RASCAS MCRT code to RAMSES.]**
 
 5. Number of scatterings proportional to tau0 should cite Adams (1972; ApJ, 174, 439).
 
@@ -61,7 +63,7 @@ Section 1. Introduction:
 
 9. In the last paragraph, please mention (after the Dijkstra sentence) that Lao & Smith (2020) generalize the slab and sphere solutions to arbitrary power-law density and emissivity profiles.
 
-    - **This reference has been added along with a short description of the work presented. [Is this still Harrington 1973 BC? Review BC appendix to see if we can keep the statement "But each of these works uses the incorrect BC"] ** 
+    - **This reference has been added along with a short description of the work presented.** 
 
 10. Please look at and cite Seon & Kim (2020; ApJS, 250, 9) in a relevant context. You may find Appendices B and C interesting (and text/figures for section 3.1). You may also find the exploration of dust in Appendix A3 of Tomaselli & Ferrara (2021) to be interesting and relevant.
 
@@ -71,7 +73,7 @@ Section 2. Steady-State Solution:
 
 1. This is a matter of taste (optional), but I find the notation is greatly simplified by moving to dimensionless units in all variables, e.g. factors of k/Delta go away. Also, modern papers often use the conventions of tau0 = k * R rather than tau0 = k * R / sqrt(pi) Delta.
 
-    - **No**
+    - **Thank you for the recommendation, but we prefer the current notation.**
 
 2. After equation 12: Do you mean "Equation (11) will be shown"?
 
@@ -100,9 +102,8 @@ Section 2. Steady-State Solution:
     - **The plotting resolution in the core is intentionally low since the solutions don't use the core component of the line profile. The submitted version of Figure 1 interpolated over x values in the core, leading to the curved shape. To avoid confusion, this interpolation has been turned off and Figure 1 has been re-plotted. The "V" shape is due to the low number of points in the core, and an explanation of this has been added in the paragraph discussing Fig 1.**
 
 8. Figure 3: It looks like the MC error bars are not representative of the true uncertainty, i.e. small compared to the variation between neighboring bins. Can you fix or comment on this, e.g. is this the Poisson statistical uncertainty?
-    - **TODO: [What do we think about this?]**
-    - Linear error can't be shown in log space the same way. Review Phil's note --- should be log10(P) +- 0.43 \delta / P, where \delta is the linear error
-    - Also: zoom in on errorbars in linear plots. Do theys how up? Is there MC variation outside of those rerors?
+
+    - **The error used on these points is the square root of the number of counts in each bin, which is normalized and then plotted on a log scale. The bins at the very edge of the spectrum have only tens of photons (10 photons ~ 30% error), but by the 5th data point in from the left side the counts are up to ~100 (~10% error), so the error bars are very small here. A sentence has been inserted in the discussion of Figure 1 addressing the scale of the errorbars and exactly how we quantify the error of the MC data, but sqrt(N) error is a standard approach and the variation between neighboring bins may simply be due to a binning effect at low statistics for a steep function.**
 
 Section 3. Time-Dependent Diffusion
 
@@ -116,7 +117,8 @@ Section 3. Time-Dependent Diffusion
 
 3. End of Section 3.1: Please summarize the intuition gained here, e.g. requiring more spatial terms than time terms is a result of the diffusion (Brownian motion / heat equation) behavior?
 
-    - **The sentence has been rephrased to more clearly state that the Pnm terms converge slowly in both n and m. A reference has been added to where this is discussed most clearly in the text, which is the paragraph describing Figure 9. It is mentioned there that additional spatial terms improve the accuracy of the solutions in the line core. Additional frequency modes reduce the "noise" or "ringing" in the solution due to more perfect cancellations with lower-order terms.** **[TODO: Is there a physical reason for this, as the reviewer mentioned?]**
+    - **The sentence has been rephrased to more clearly state that the Pnm terms converge slowly in both n and m. A reference has been added to where this is discussed most clearly in the text, which is the paragraph describing Figure 9. It is mentioned there that additional spatial terms improve the accuracy of the solutions in the line core. Additional frequency modes reduce the "noise" or "ringing" in the solution due to more perfect cancellations with lower-order terms.**
+    - **A sentence has been added discussing the physical intuition of the modes. The intensity rapidly falls off at the surface, so if you do not have sufficient spatial resolution you will not be able to resolve this falloff accurately. This is why you need many n terms. For the m terms, you have a very steeply falling function in the line wings and you're trying to resolve it with a Fourier sum. The further out you want to go, the more terms you need.**
 
 4. Before equation 42: "hone in on the eigenvalue" Can you be more specific, e.g. do you use a bisection method? Is convergence robust/predictable, e.g. if you take too large of a window then you have two resonance values? Also, do you mean "gamma_nm can be calculated by linear interpolation from" or is it something else?
 
@@ -157,7 +159,7 @@ Section 4. Discussion:
 
 2. Figure 9: Give some physical intuition about what fluence is in the caption, e.g. steady state spatially integrated flow of radiation at a given frequency. Mention more about behavior of SS vs partial sum vs time-integrated in the caption, e.g. briefly explain uptick and oscillations. Also, it is a bit confusing that the axis does not go to zero. Perhaps you can use the range [0,30] to show no motion near the core (took me a second to understand why it was so high).
 
-    - **A definition of the fluence has been added in the caption, as well as a reference to the equation where it is defined. We leave explanation of the behavior of the solutions to the body of the text, and reserve the caption for explaining what is shown. A note has been added explaining the starting value of the x-axis - we wish for the reader to focus on the behavior in the line wing and not be distracted by the solutions' odd behavior in the line core, where it is not expected to be correct.**
+    - **A definition of the fluence has been added in the caption, as well as a reference to the equation where it is defined. We leave explanation of the behavior of the solutions to the body of the text, and reserve the caption for explaining what is shown. A note has been added explaining the starting value of the x-axis - we wish for the reader to focus on the behavior in the line wing and not be distracted by the solutions' behavior in the line core, which is not spatially resolved by the number of modes used.**
 
 3. Figure 9: I believe you can provide a closed form expression for the purple curve. Please do so if it is simple, e.g. in principle this should be very similar to the J version from equations 81 and 90 of Lao & Smith (2020).
 
@@ -195,7 +197,7 @@ Appendix A:
 
 4. After equation A6: Do you mean "scattering cancel for p = 0"?
 
-    - **Yes! Correction made.**
+    - **Yes. Correction made.**
 
 5. Equation A15: I suggest removing the = 0 at the end, which is misleading in my opinion. At any rate, the explanation in the text is enough.
 
