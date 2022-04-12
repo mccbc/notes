@@ -6,7 +6,7 @@ General comments:
 
 1. The title may be too general as it does not actually mention the main novel aspects of the work and most people think that resonant scattering in a sphere is a solved problem. I suggest revising to include key words such as (semi-)analytic, BC corrections, or an impulse source, but I leave this up to the authors.
 
-    - **The title has been changed to include the keywords relating to the novel aspects of the work, rather than a general description of the problem. Now includes "Boundary Conditions".**
+    - **The title has been changed to include the keywords relating to the novel aspects of the work, rather than a general description of the problem. Now includes mention of "Self-Consistent Boundary Conditions", which is the chief novel aspect of the work.**
 
 2. I realize there may be a difference in style across fields, but I recommend more thorough citations of previous works. This is helpful for readers to better connect to other fields and appreciate the context of your results.
 
@@ -14,7 +14,7 @@ General comments:
 
 3. Very minor but I suggest removing redundant significant figures, i.e. replace xs = 0.0 with xs = 0 and tau0 = 1.0 x 10^7 with tau0 = 10^7. This is frequent and distracting.
 
-    - **TODO:**
+    - **These replacements have been made in all figures, figure captions, and in the main body of the text.**
 
 Abstract:
 
@@ -42,7 +42,7 @@ Section 1. Introduction:
 
 4. "Monte Carlo methods directly coupled with fluid dynamics" should cite Smith, Bromm, Loeb (2017; MNRAS, 464, 2963, see also 2016; MNRAS, 460, 3143). Also, potentially relevant is the local sub-grid model of Kimm et al. (2018; MNRAS, 475, 4617).
 
-    - **Citation to Smith, Bromm, Loeb (2017; MNRAS 464, 2963) added after the statement about MCRT coupled with fluid dynamics. TODO: [The other two references don't seem to add much. 2016 paper just focuses on a similar methodology applied to CR7, and the 2018 paper does the same thing but by coupling RASCAS MCRT code to RAMSES.]**
+    - **Citation to Smith, Bromm, Loeb (2017; MNRAS 464, 2963) added after the statement about MCRT coupled with fluid dynamics.**
 
 5. Number of scatterings proportional to tau0 should cite Adams (1972; ApJ, 174, 439).
 
@@ -58,8 +58,7 @@ Section 1. Introduction:
 
 8. "To our knowledge...never been quantified" should be updated to reflect recent studies that provide insights about related concepts. For example, Lao & Smith (2020; MNRAS, 497, 3925) use a parametrized boundary condition to incorporate some flexibility and Tomaselli & Ferrara (2021; MNRAS, 504, 89; equation A18) explore an alternative flux-free boundary condition. While this is qualitatively different than your approach and does not quantify errors, it is worth mentioning.
 
-    - **TODO:** **[Lao & Smith 2020's figure 12 demonstrate the exact disrepancy our solution corrects for, so this is not a good example of a boundary condition that improves upon Harrington. Reference equation 36 --- same boundary condition as harrington.]**
-    - **[Tomaselli & Ferrara 2021 use a flux-free boundary condition. See eq A18 in their appendix. It's not clear why this is worth mentioning, as it's just another incorrect boundary condition.]**
+    - **Lao & Smith 2020's figure 12 demonstrates the disrepancy our novel solution corrects for, since their equation 36 seems to use the same boundary condition as Harrington 1973. Tomaselli & Ferrara 2021 use a flux-free boundary condition, which also does not address the frequency-dependent correction as they also use an approximation for the frequency-dependent eigenvalues. These references have been added in the discussion of previous works.**
 
 9. In the last paragraph, please mention (after the Dijkstra sentence) that Lao & Smith (2020) generalize the slab and sphere solutions to arbitrary power-law density and emissivity profiles.
 
@@ -67,7 +66,7 @@ Section 1. Introduction:
 
 10. Please look at and cite Seon & Kim (2020; ApJS, 250, 9) in a relevant context. You may find Appendices B and C interesting (and text/figures for section 3.1). You may also find the exploration of dust in Appendix A3 of Tomaselli & Ferrara (2021) to be interesting and relevant.
 
-    - **TODO:** **[May be another paper to cite where the analytic Neufeld 1990 solution fails & has a noticeable discrepancy at the peak (Figure 1). Figure 2 shows a solution that's incorrect in a brand new way. Does slightly better for T=10 K, low temperature. Not as much of a discrepancy at low optical depths. Seems like from Eq. C4 this is just the same C17 equation from Dijkstra.]**
+    - **The work presented in Seon & Kim 2020 (Figure 1) also shows the discrepancy at the peak of the spectrum that our work aims to correct, since the analytic solution is from Neufeld 1990 which is discussed elsewhere in our paper. Figure 2 shows another solution, but this is derived from the same series solution as Dijkstra et al 2006, which is discussed elsewhere in our text, which uses an approximation for the frequency-dependent eigenvalues. The reference has been added in our discussion of previous work in the introduction.**
 
 Section 2. Steady-State Solution:
 
@@ -87,11 +86,11 @@ Section 2. Steady-State Solution:
 4. Figure 1: Please provide brief summaries in the caption (or in the labels) to remind readers skimming this, e.g. H0 = fiducial solution, Hd = divergent solution, Hbc = our additional correction accounting for more self-consistent BCs. Finally, people may be more used to seeing J (rather than H) so please point out when/if there is are important differences for interpreting results.
 
     - **The mentioned labels have been added to the captions Figure 1. The legend of Figure 1 has been changed to match the format used in the other figures, i.e. H_0 + H_{bc} rather than H_{0+bc}. The tick labels on the y-axis of the log-scale plot have been changed to 10^(number) format to be consistent with the other figures in the paper.**
-    - **The last point regarding H vs. J should be self-explanatory from our equations and their conversion to escape probabilities (see Eq 22). Also, J=0 at the surface for the fiducial solution, so this would not be useful to plot.**
+    - **The last point regarding H vs. J should be self-explanatory from our equations and their conversion to escape probabilities (see Eq 22). Also, J=0 at the surface for the fiducial solution, so this would not be useful to plot since we are evaluating all solutions at the surface of the sphere.**
 
 5. End of Section 2.1: Perhaps it is useful to emphasize that the BC failure occurs before the spatial and frequency diffusion approximations. For example, it is known that the traditional solution is accurate for atua0 > 10^3 (i.e. atau0^1/3 >> 1), but several things may go wrong as you reach atau0 < 1. Do you have further insights about the order of failures?
 
-     - **We discuss points in section 2.1 that address this. It is mentioned that photons at the peak are optically thin when atau0~1, and that our solution is only valid when the peaks of the distribution lie well outside of the Doppler core, i.e. for large tau0.**.
+     - **We discuss points in section 2.1 that address this. It is mentioned that photons at the peak are optically thin when atau0~1, and that our solution is only valid when the peaks of the distribution lie well outside of the Doppler core, i.e. for large tau0.**
 
 6. In my opinion it is more helpful to think in terms of atau0 rather than tau0. Perhaps you can periodically remind the reader that T = 10^4 K leads to atau0 = ?, e.g. in the caption of Fig. 1.
 
@@ -103,13 +102,13 @@ Section 2. Steady-State Solution:
 
 8. Figure 3: It looks like the MC error bars are not representative of the true uncertainty, i.e. small compared to the variation between neighboring bins. Can you fix or comment on this, e.g. is this the Poisson statistical uncertainty?
 
-    - **The error used on these points is the square root of the number of counts in each bin, which is normalized and then plotted on a log scale. The bins at the very edge of the spectrum have only tens of photons (10 photons ~ 30% error), but by the 5th data point in from the left side the counts are up to ~100 (~10% error), so the error bars are very small here. A sentence has been inserted in the discussion of Figure 1 addressing the scale of the errorbars and exactly how we quantify the error of the MC data, but sqrt(N) error is a standard approach and the variation between neighboring bins may simply be due to a binning effect at low statistics for a steep function.**
+    - **The error used on these points is the square root of the number of counts in each bin, which is normalized and then plotted on a log scale. The bins at the very edge of the spectrum have only tens of photons (10 photons ~ 30% error), but by the 5th data point in from the left side the counts are up to ~100 (~10% error), so the error bars are very small here. A sentence has been inserted in the discussion of Figure 1 stating exactly how we quantify the error of the MC data. sqrt(N) error is a standard approach and the variation between neighboring bins may simply be due to a binning effect at low statistics for a steep function.**
 
 Section 3. Time-Dependent Diffusion
 
 1. Figure 5: Perhaps a combination of different colors and line styles (in addition to line thickness) would make the trends clearer.
 
-    - **This was explored, and unfortunately adding more colors and line styles to the plot confuse the trends and make the plot more visually cluttered. As an alternative solution, the plot has been separated into three panels so that the trend can be seen more effectively while still preserving the scale and relative offset of the solutions.**
+    - **This was explored, and unfortunately adding line styles to the plot confuses the trends and makes the plot more visually cluttered. As an alternative solution, the plot has been separated into three panels so that the trend can be seen more effectively while still preserving the scale and relative offset of the solutions.**
 
 2. Equation 33: Can you remind the reader about why this is the solution? (e.g. ansatz, harmonic forcing, residue calculus, etc.)
 
@@ -137,7 +136,7 @@ Section 3. Time-Dependent Diffusion
 
 7. After equation 47: "as shown in Appendix B, where the WKB approximation reveals kappa ... = pi/8".
 
-    - **TODO: I'm not sure what is meant by kappa=pi/8 here, but a mention of the WKB approximation is used to describe how Eq 47 is obtained.**
+    - **It has been added that Equation 47 comes from setting the denominator of equation B5 in the WKB approximation to zero.**
 
 8. After equation 49: Please cite Adams (1975; ApJ, 201, 350) regarding the "expected atau0^1/3 scaling".
 
@@ -145,7 +144,7 @@ Section 3. Time-Dependent Diffusion
 
 9. Figure 8: Please report the coefficient of the atau0^1/3 scaling used in this figure, e.g. for comparison with t_trap/t_light ~ 0.901 atau0^1/3 after equation 91 of Lao & Smith (2020). If it is much higher or lower, please explain why it differs from the Steady State solution.
 
-    - **The exact scaling of 0.51 (atau0)^(1/3) has been added. TODO: Why is this different than Lao & Smith (2020)? Ours comes from the wkb approximation, lowest order eigenfrequency at the highest optical depth. Theirs is more simple: 4pi c * R^2 * avg radiation density / 3 / L.**
+    - **The exact scaling of 0.51 (atau0)^(1/3) has been added, and a comparison has been added to the scaling mentioned in Lao & Smith (2020).**
 
 10. Figure 8: There are missing MC points at 10^8 and 10^9, which is understandable given the computational expense without core skipping (so this is optional). However, can you comment on how quickly the MC agrees with the analytic scaling or if the systematic excess decays slowly?
 
@@ -175,7 +174,7 @@ Section 4. Discussion:
 
 6. End of Section 4.2: Core-skipping and hybrid diffusion methods "do not track the amount of time photons spend in the line core" is a bit misleading. In fact, state-of-the-art codes use dynamical core skipping that checks the uniformity in the density and velocity fields, i.e. no serious violations are made. In fact, one could estimate how many scatterings and the path lengths that are skipped. Also, rDDMC in practice requires interfacing with traditional MC for core photons for a similar reason that you would not want to apply spatial diffusion methods in optically thin gas.
 
-    - **TODO: "Do not track" has been changed to "Do not directly measure or sample". Need rephrasing?**
+    - **This is a good point. Our discussion of these methods have been rephrased to remove the mention of limitations of the alternate approaches, which was an incomplete description given the recent work in this area. As you mention, a lot of state-of-the-art codes have sophisticated approaches to solving this problem and there is not a need for us to criticize those approaches in this paragraph.**
 
 7. End of Section 4.2: "faces of each grid cell" For your own reference the Lucy path-based estimator method is much better than tracking face fluxes (as done in Huang 2017 and Smith 2017).
 

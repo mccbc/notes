@@ -10,10 +10,10 @@ We use a standard technique for the error bars on the monte carlo points - stdde
 
 **To do:**
 
- - [X] Edits to paper:
-     - Section 3, section 4, conclusions
- - [ ] Rework xinit plot - try introducing different line styles in the panels for clarity. Dashed and dotted in the foreground, solid in the background. Also no longer needs to be grayscale.
- - [ ] Add physical intuition discussion of n and m modes
+
+ - [X] Rework xinit plot - try introducing different line styles in the panels for clarity. Dashed and dotted in the foreground, solid in the background. Also no longer needs to be grayscale.
+     - Do 3 panel variant 2: all three optical depths shown in a single panel, each panel showing a different source frequency.
+ - X] Add physical intuition discussion of n and m modes
  - [ ] Check what the source frequency is for figure 9 in the paper
  - [ ] Read Dijkstra and Loeb 2008
      - lya outflows around galaxies
@@ -32,7 +32,8 @@ We use a standard technique for the error bars on the monte carlo points - stdde
 
 
 **Recently Done**
-
+ - Edits to paper:
+     - Section 3, section 4, conclusions
  - Tried logscale errorbars on P(x) plots for paper
      - They look very large - not sure if correct
      - sqrt(N) is standard error, then normalized in the same way the counts are. Error bar plugged in to scatter plot was 0.43 * sqrt(N) / N
