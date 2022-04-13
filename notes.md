@@ -1,3 +1,60 @@
+
+
+**To do:**
+
+
+
+**Questions**
+
+ - `montecarlo.cpp:865` is causing a segfault. Calls `InitializeAccelerationOpacity` when coherent_scattering is false.
+     - `opacity.cpp:357-377` is the issue. Within `InitializeAccelerationOpacity`, there's a loop that seems to be causing the segfault.
+ - Do we want to trigger acceleration regardless of what tauremaining is?
+     - Do we "interrupt" the generalmover's usual behavior to diffuse in a sphere based on the distance to the cell faces, OR
+     - Do we only accelerate when tauremaining **and** the optical depth to the nearest cell face is larger than the threshold?
+
+
+**Recently Done**
+
+ - [X] Overplotted lya data from three simulations, decreasing nphot each time. Added errorbars to plots. Generally shows that decreasing nphot while keeping tau0 and bins the same artificially increases the values out on the wing
+ - [X] Rudimentary acceleration code
+     - `generalmover` `Move` routine now has logic for if both `resonance` and `acceleration` flags are true.
+         - If true, it will calculate the distance from the photon to the closest cell face, and check if that distance is greater than tauacc/chi, where tauacc is our acceleration threshold optical depth.
+             - If the accel threshold is met, it will call MRWAcceleration using the dl and tauacc arguments specified.
+     - `PhotonMover::MRWAcceleration` now has logic to check if `resonance` is true.
+         - If true, it will set r0 equal to the distance to the nearest cell face
+         - It then positions the photon on a sphere of radius r0
+             - Converts to cartesian, then moves to random point on sphere, then converts back to sphpol
+         - If false, it will use the old Compton code.
+
+ - [X] Rework xinit plot - try introducing different line styles in the panels for clarity. Dashed and dotted in the foreground, solid in the background. Also no longer needs to be grayscale.
+     - Do 3 panel variant 2: all three optical depths shown in a single panel, each panel showing a different source frequency.
+ - [X] Add physical intuition discussion of n and m modes
+ - [X] Check what the source frequency is for figure 9 in the paper
+     - It is in fact xs=0, tau0=7 - checked parameters & compared with others
+
+**Previous Updates**
+
+ - [X] Make acceleration flag choose what type of accel to use based on scattering type
+     - Do this in MRWAcceleration
+     - Scattering flag is now set before photon mover is assigned
+     - Finish debugging this
+ - [X] Move acceleration code in generalmover to MRWAcceleration, only turn on if `acceleration` flag is set and scattering method is resonance
+ - [X] Add spherical position and direction vector sampling - uniform dist on the sphere
+
+ - [ ] Read Dijkstra and Loeb 2008
+     - lya outflows around galaxies
+     - Compares rad pressure to gravity, talks about ionizing radiaiton vs lya for radiation pressure
+     - a good model for force balancing in exoplanet atmospheres
+     -   Analytic estimates to motivate parameters you're putting in the hydro calculation
+
+ - Edits to paper:
+     - Section 3, section 4, conclusions
+ - Tried logscale errorbars on P(x) plots for paper
+     - They look very large - not sure if correct
+     - sqrt(N) is standard error, then normalized in the same way the counts are. Error bar plugged in to scatter plot was 0.43 * sqrt(N) / N
+
+ - Moved scattering method update call to be above the photon mover, so the mover has the correct flag to use for scattering when determining what acceleration function to use
+
 10 points is 30% err
 100 points is 10% err
 By the 5th data point we're already at an errorbar size that's very small
@@ -7,40 +64,6 @@ We're binning a function that falls strongly in x, and reporting no x error. The
 Do simulations with fewer and fewer photons - see if you can demonstrate wing binning behavior - compare with analytic solution
 
 We use a standard technique for the error bars on the monte carlo points - stddev is sqrt N since all the photons have the same weight - add this in the text.
-
-**To do:**
-
-
- - [X] Rework xinit plot - try introducing different line styles in the panels for clarity. Dashed and dotted in the foreground, solid in the background. Also no longer needs to be grayscale.
-     - Do 3 panel variant 2: all three optical depths shown in a single panel, each panel showing a different source frequency.
- - X] Add physical intuition discussion of n and m modes
- - [ ] Check what the source frequency is for figure 9 in the paper
- - [ ] Read Dijkstra and Loeb 2008
-     - lya outflows around galaxies
-     - Compares rad pressure to gravity, talks about ionizing radiaiton vs lya for radiation pressure
-     - a good model for force balancing in exoplanet atmospheres
-     -   Analytic estimates to motivate parameters you're putting in the hydro calculation
- - [ ] Make acceleration flag choose what type of accel to use based on scattering type
-     - Do this in MRWAcceleration
-     - Scattering flag is now set before photon mover is assigned
-     - Finish debugging this
- - [ ] Move acceleration code in generalmover to MRWAcceleration, only turn on if `acceleration` flag is set and scattering method is resonance
- - [ ] Add spherical position and direction vector sampling - uniform dist on the sphere
-
-**Questions**
-
-
-
-**Recently Done**
- - Edits to paper:
-     - Section 3, section 4, conclusions
- - Tried logscale errorbars on P(x) plots for paper
-     - They look very large - not sure if correct
-     - sqrt(N) is standard error, then normalized in the same way the counts are. Error bar plugged in to scatter plot was 0.43 * sqrt(N) / N
-
- - Moved scattering method update call to be above the photon mover, so the mover has the correct flag to use for scattering when determining what acceleration function to use
-
-**Previous Updates**
 
  - Why isn't the scattering method flag being set correctly? `photonmover.cpp:31` gets a flag from `montecarloblock.cpp:244`, which reads it in from the athinput file through `montecarlo.cpp:263`. But, print statement seems to show that the flag is 0, not 5 as it should be for resonance transfer.
      - Create a flag 
