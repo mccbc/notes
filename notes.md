@@ -2,6 +2,15 @@
 
 **To do:**
 
+ - [ ] Cut off every data point below counts=20, then say what fraction of the points have error bars that contain the high signal data? Should be about 60%, if it's more than that you've overestimated error, if it's under you've underestimated
+ - [ ] Any time there's an if acceleration flag, put && !(resonance) if you're not using it. 
+ - [ ] Update moments inside mrwacceleration
+     - Doesn't have access to montecarloblock to update moments, but each photon knows what mesh block it's in. Write your own updatemoments func for accleeration specifically.
+- [ ] Sample outgoing angles from the sphere: draw a theta between 0 and pi/2, with respect to local coords, draw an azimuth as well
+    - Have to work out algebra since you need a full 3d transformation
+    - Draw angle wrt a local tetrad at the surface of the sphere
+    - The tetrad has a location relative to the origin o the sphere, then need to translate back to simulation coords
+    - When MRWAcceleration finishes, `continue` through the loop over photons. It's completed its step, so don't need to propagate further.
 
 
 **Questions**
