@@ -15,14 +15,16 @@
 
 **Questions**
 
- - `montecarlo.cpp:865` is causing a segfault. Calls `InitializeAccelerationOpacity` when coherent_scattering is false.
-     - `opacity.cpp:357-377` is the issue. Within `InitializeAccelerationOpacity`, there's a loop that seems to be causing the segfault.
- - Do we want to trigger acceleration regardless of what tauremaining is?
-     - Do we "interrupt" the generalmover's usual behavior to diffuse in a sphere based on the distance to the cell faces, OR
-     - Do we only accelerate when tauremaining **and** the optical depth to the nearest cell face is larger than the threshold?
+
 
 
 **Recently Done**
+
+ - `montecarlo.cpp:865` is causing a segfault. Calls `InitializeAccelerationOpacity` when coherent_scattering is false.
+     - `opacity.cpp:357-377` is the issue. Within `InitializeAccelerationOpacity`, there's a loop that seems to be causing the segfault.
+ - Do we want to trigger acceleration regardless of what tauremaining is? **Yes**
+     - Do we "interrupt" the generalmover's usual behavior to diffuse in a sphere based on the distance to the cell faces? **YES**
+     - Do we only accelerate when tauremaining **and** the optical depth to the nearest cell face is larger than the threshold? **No, we want the acceleration to not care about tauremaining. It represents many many scatterings, so we don't need to worry about interrupting a single one.**
 
  - [X] Overplotted lya data from three simulations, decreasing nphot each time. Added errorbars to plots. Generally shows that decreasing nphot while keeping tau0 and bins the same artificially increases the values out on the wing
  - [X] Rudimentary acceleration code
