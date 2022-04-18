@@ -1,8 +1,31 @@
+TODO: Acceleration code
+---
+- [ ] Outgoing angle distribution
+- [ ] Solve the analytic cumulative distribution for Dijkstra function on paper - once you have a random number, you need to get a frequency from the cumulative distribution
+    - Also contained in Phil's notes
+- [ ] Wait time distribution
+    - Use rejection method on escape time distribution from simulated eigenfunctions
+    - Produce an eigenfunction solution for tau0=1e6, T=10^4 K, do MC run for the same 
 
+**Code runs**
+
+ - [ ] Produce an emergent spectrum with accel off, then accel on
+     - Run it with exactly the same parameters
+     - See how the spectrum is different. It won't work well at all at first but will allow for some fine tuning
+ - [ ] Want to show accel code is running & show a real result
+
+**Potential issues**
+
+ - Sigma integral - if we let things go into the core, relationship between sigma and x is not straighforward
+     - Need a fitting formula for that too
+
+**Shane's todos:**
+
+ - Coupling of the radiative forces to hydro, radiative heating (?), make a plot showing the coupling
 
 **To do:**
 
- - [ ] Cut off every data point below counts=20, then say what fraction of the points have error bars that contain the high signal data? Should be about 60%, if it's more than that you've overestimated error, if it's under you've underestimated
+ - [ ] Add "Revised manuscript submitted to ApJ" on arXiv post
  - [ ] Any time there's an if acceleration flag, put && !(resonance) if you're not using it. 
  - [ ] Update moments inside mrwacceleration
      - Doesn't have access to montecarloblock to update moments, but each photon knows what mesh block it's in. Write your own updatemoments func for accleeration specifically.
@@ -19,6 +42,9 @@
 
 
 **Recently Done**
+
+ - [X] Cut off every data point below counts=20, then say what fraction of the points have error bars that contain the high signal data? Should be about 60%, if it's more than that you've overestimated error, if it's under you've underestimated
+     - **Done!** We find that 22/32 (68%) of the higher N data points fall within the  errorbars of the lower N data points, consistent with 1 sigma error.
 
  - `montecarlo.cpp:865` is causing a segfault. Calls `InitializeAccelerationOpacity` when coherent_scattering is false.
      - `opacity.cpp:357-377` is the issue. Within `InitializeAccelerationOpacity`, there's a loop that seems to be causing the segfault.
