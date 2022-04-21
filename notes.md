@@ -1,7 +1,45 @@
+**tau0=1e7 nphot=100 tauacc=1000**
+cpu time used  = 510.75
+samples/cpu_second = 0.19579
+
+**tau0=1e7 nphot=100 tauacc=100**
+cpu time used  = 1181.37
+samples/cpu_second = 0.0846475
+
+**tau0=1e7 nphot=100 NO ACCEL**
+cpu time used  = 155.89
+samples/cpu_second = 0.641478
+
+**tau0=1e4 nphot=100000 tauacc=10**
+cpu time used  = 572.72
+samples/cpu_second = 174.605
+
+
+
+gdb ../../bin/athena
+break photonmover.cpp:
+run -i athinput.sphere_lya
+
+
+
+First thing we want to do is look at spectrum
+Make fewer zones -reduce by a factor of 4, makes the zones more optically thick
+
+Raaise to 1e5, 1e6 optical depth, then make zones 32 in radius & 16 in theta & phi
+
+Use 1e7 for athena sim but with 128 zones
+There's nothing special about cell size unless you're looking at moments
+
+Use phil's 1e7 monte carlo from pleiades
+
+Decide which part of the voigt line profile to use based on whether the core or wing is the right approx to use, Could be smaller of the two pieces?
+
 TODO: Acceleration code
 ---
-- [ ] Outgoing angle distribution
-- [ ] Solve the analytic cumulative distribution for Dijkstra function on paper - once you have a random number, you need to get a frequency from the cumulative distribution
+- Accelerated: 792.83
+- Not accelerated: 533.2
+- [X] Outgoing angle distribution
+- [X] Solve the analytic cumulative distribution for Dijkstra function on paper - once you have a random number, you need to get a frequency from the cumulative distribution
     - Also contained in Phil's notes
 - [ ] Wait time distribution
     - Use rejection method on escape time distribution from simulated eigenfunctions
@@ -26,10 +64,10 @@ TODO: Acceleration code
 **To do:**
 
  - [ ] Add "Revised manuscript submitted to ApJ" on arXiv post
- - [ ] Any time there's an if acceleration flag, put && !(resonance) if you're not using it. 
+ - [X] Any time there's an if acceleration flag, put && !(resonance) if you're not using it. 
  - [ ] Update moments inside mrwacceleration
      - Doesn't have access to montecarloblock to update moments, but each photon knows what mesh block it's in. Write your own updatemoments func for accleeration specifically.
-- [ ] Sample outgoing angles from the sphere: draw a theta between 0 and pi/2, with respect to local coords, draw an azimuth as well
+- [X] Sample outgoing angles from the sphere: draw a theta between 0 and pi/2, with respect to local coords, draw an azimuth as well
     - Have to work out algebra since you need a full 3d transformation
     - Draw angle wrt a local tetrad at the surface of the sphere
     - The tetrad has a location relative to the origin o the sphere, then need to translate back to simulation coords
