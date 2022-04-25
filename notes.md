@@ -1,3 +1,59 @@
+Fixed frequency sampling
+---
+
+**tau0=1e7 nphot=100 tauacc=1**
+cpu time used  = 174.86
+samples/cpu_second = 0.571886
+
+**tau0=1e7 nphot=100 tauacc=100**
+cpu time used  = 217.32
+samples/cpu_second = 0.460151
+
+**tau0=1e7 nphot=100 tauacc=1000**
+cpu time used  = 193.66
+samples/cpu_second = 0.516369
+
+
+ - Idea for frequency sampling test - print out all sampled energies, then plot them as a distribution. Should get a pretty good match to the Dijkstra spectrum. If not, something is wrong with the equation, which may be slowing down the escape.
+
+ - Run accel code at tau0=1e7 for tauacc=1. Should be terribly wrong but will be very fast hopefully.
+
+- Get something that runs for an hour without acceleration. Then scale runtime by number of photons to get runtime for 50k without accel. Should be much slower than accelerated code.
+
+
+
+After code fix
+---
+
+**tau0=1e7 nphot=50000 tauacc=1000**
+cpu time used  = 50539.3
+samples/cpu_second = 0.989329
+
+**tau0=1e7 nphot=100 tauacc=100**
+cpu time used  = 224.42
+samples/cpu_second = 0.445593
+
+**tau0=1e7 nphot=100 tauacc=1000**
+cpu time used  = 177.31
+samples/cpu_second = 0.563984
+
+**tau0=1e7 nphot=100 tauacc=10000**
+cpu time used  = 182.39
+samples/cpu_second = 0.548276
+
+**tau0=1e7 nphot=100 NOACC**
+cpu time used  = 151.87
+samples/cpu_second = 0.658458
+
+
+**tau0=1e4 nphot=100000 tauacc=10**
+cpu time used  = 437.35
+samples/cpu_second = 228.65
+
+
+
+Before code fix
+---
 **tau0=1e7 nphot=100 tauacc=1000**
 cpu time used  = 510.75
 samples/cpu_second = 0.19579
@@ -15,11 +71,17 @@ cpu time used  = 572.72
 samples/cpu_second = 174.605
 
 
+gdb debug commands
+---
 
 gdb ../../bin/athena
 break photonmover.cpp:
 run -i athinput.sphere_lya
 
+print tauremaining
+print step
+print dl
+print 1000./chi
 
 
 First thing we want to do is look at spectrum
