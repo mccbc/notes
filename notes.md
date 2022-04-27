@@ -1,5 +1,16 @@
+After cell wall crossing
+---
+**tau0=1e7 nphot=50000 tauacc=10000**
+cpu time used  = 2943.83
+samples/cpu_second = 16.9847
+
+
 Fixed frequency sampling
 ---
+
+**tau0=1e7 nphot=50000 tauacc=1000**
+cpu time used  = 45814.8
+samples/cpu_second = 1.09135
 
 **tau0=1e7 nphot=100 tauacc=1**
 cpu time used  = 174.86
@@ -25,7 +36,7 @@ samples/cpu_second = 0.516369
 After code fix
 ---
 
-**tau0=1e7 nphot=50000 tauacc=1000**
+**tau0=1e7 nphot=50000 NOACC**
 cpu time used  = 50539.3
 samples/cpu_second = 0.989329
 

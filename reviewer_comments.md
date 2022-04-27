@@ -180,7 +180,7 @@ Section 4. Discussion:
 
 7. End of Section 4.2: "faces of each grid cell" For your own reference the Lucy path-based estimator method is much better than tracking face fluxes (as done in Huang 2017 and Smith 2017).
 
-    - **Noted. The mention of face fluxes has been removed.**
+    - **Noted. The mention of face fluxes has been removed and replaced with "within each cell".**
 
 Appendix A:
 
