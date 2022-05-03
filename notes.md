@@ -1,47 +1,46 @@
-Calculate energy and momentum deposited in the cells as the photon moves through
+ - [ ] Calculate energy and momentum deposited in the cells as the photon moves through
 
-Do change of momentum of the photon before and after the move, then do -that change goes into the gas
-
-Does not need path integral or anything like that
-
-Couple the hydro with radiation --- need the rad force and net heating and cooling
-
-If zones crossed, do half in one zone and half in the other.
+    - Do change of momentum of the photon before and after the move, then do -that change goes into the gas
+    - Does not need path integral or anything like that
+    - Couple the hydro with radiation --- need the rad force and net heating and cooling
+    - [ ] If zones crossed, do half in one zone and half in the other.
 
 MonteCarloBlock::TransferPhotons
+
 UpdateCooling (called after you initialize, transform, scattering, etc)
-    Calculates change in the photon energy before and after
-    This happens after oyu move photons and scatter photons
-        What's different: in acceleration, doing this in the move instead of after the scattering. It takes the energy before and the weight before, then computes cooling proportional of the change in the weights times the change in the energy
-        Substract energy change to get cooling
-        Array for moments: MCINET (MCI net cooling). May need to change the structure Need to create a new array of moments to store the momentum change. 3 more numbers - 3 elements of the momentum change.
+
+- Calculates change in the photon energy before and after
+- This happens after you move photons and scatter photons
+    - What's different: in acceleration, doing this in the move instead of after the scattering. It takes the energy before and the weight before, then computes cooling proportional of the change in the weights times the change in the energy
+    - Substract energy change to get cooling
+    - Array for moments: MCINET (MCI net cooling). 
+        - May need to change the structure 
+        - Need to create a new array of moments to store the momentum change. 3 more numbers for 3 elements of the momentum change.
 
 
-Momentum block comes from an enum - need to add another enumeration. Will also need to update NMOM - tells you how many elements there are in the enumeration. 
+- Momentum block comes from an enum - need to add another enumeration. Will also need to update NMOM - tells you how many elements there are in the enumeration. 
 
-When you do accelerations, need to make sure this new function is being called at the right time.
+- When you do accelerations, need to make sure this new function is being called at the right time.
 
-Need to add previous momentum as an argument to UpdateCooling
+- Need to add previous momentum as an argument to UpdateCooling
 
-Need to know momentum before you call the function, so you can calculate the difference
+- Need to know momentum before you call the function, so you can calculate the difference
 
-Rename UpdateCooling to "UpdateSourceTerms"
+- Rename UpdateCooling to "UpdateSourceTerms"
 
-Only issue --- it currently deposits all the energy in one zone. Need to make it capable to do two zones. For now just deposit everything in the final zone.s
+- Only issue --- it currently deposits all the energy in one zone. Need to make it capable to do two zones. For now just deposit everything in the final zone.
 
 
  - [ ] Do a monte carlo run, check n dot n' at each scattering. Also check for correlation between v' and n' --- we're saying they're uncorrelated. Are they?
+    - Infinite periodic box - should not transfer momentum at all
 
-Infinite periodic box - should not transfer momentum at all
+- [X] Add figure caption discussing what's shown in the plot and how long each took to run
 
-Add figure caption discussing what's shown in the plot and how long each took to run
-
-Produce another 50k photon run with a more lax accel threshold ---- should basically be doing random walk with mean free path equal to grid zone dimensions
-
+- [X] Produce another 50k photon run with a more lax accel threshold ---- should basically be doing random walk with mean free path equal to grid zone dimensions
 
 
 
-After cell wall crossing
+After cell wall crossing patch
 ---
 
 **tau0=1e7 nphot=50000 tauacc=1**
