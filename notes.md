@@ -1,4 +1,15 @@
- - [ ] Calculate energy and momentum deposited in the cells as the photon moves through
+Questions
+---
+
+ - `montecarloblock.cpp#L1087` : Why is the cooling not `weight1 * energy1 - weight0 * energy0`? This is not equivalent to what's currently there, `(weight1-weight0) * (energy1-energy0)`
+
+ - `montecarloblock.cpp#L500` : Why is initial energy set to zero here? This is called every time after a move as long as the photon is still evolving, and isn't inside any of the logic for absorption.
+
+ - `montecarloblock.cpp#L535` : Why is the initial weight here set to zero? Should it not be set to `weight_pre_scat`, set along with `energy_pre_scat` pre-scattering?
+
+Todo:
+
+ - [X] Calculate energy and momentum deposited in the cells as the photon moves through
 
     - Do change of momentum of the photon before and after the move, then do -that change goes into the gas
     - Does not need path integral or anything like that
@@ -12,7 +23,7 @@ UpdateCooling (called after you initialize, transform, scattering, etc)
 - Calculates change in the photon energy before and after
 - This happens after you move photons and scatter photons
     - What's different: in acceleration, doing this in the move instead of after the scattering. It takes the energy before and the weight before, then computes cooling proportional of the change in the weights times the change in the energy
-    - Substract energy change to get cooling
+    - Subtract energy change to get cooling
     - Array for moments: MCINET (MCI net cooling). 
         - May need to change the structure 
         - Need to create a new array of moments to store the momentum change. 3 more numbers for 3 elements of the momentum change.

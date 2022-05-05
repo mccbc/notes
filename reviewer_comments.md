@@ -50,7 +50,7 @@ Section 1. Introduction:
 
 6. "A method that can accurately characterize..." should mention dynamical core-skipping is used for MCRT codes. It is fine to argue we should still explore others, or that intuition alone is sufficient motivation, but as written this sounds like this is a completely unsolved problem.
 
-    - **Elaboration on this point is present in S4.2 Impulsive Source. The statement on this topic in the introduction does not necessarily imply that such a method does not exist, merely that it has the potential to accelerate the calculation.** 
+    - **Elaboration on this point is present in S4.2 Impulsive Source. The statement on this topic in the introduction does not necessarily imply that such a method does not exist, merely that it has the potential to accelerate the calculation. A reference has been added to ** 
 
 7. Several places use "out on the wings" or similar, which should instead use the word "in" (see also after equation 3 and end of section 2 etc.).
 
@@ -66,7 +66,7 @@ Section 1. Introduction:
 
 10. Please look at and cite Seon & Kim (2020; ApJS, 250, 9) in a relevant context. You may find Appendices B and C interesting (and text/figures for section 3.1). You may also find the exploration of dust in Appendix A3 of Tomaselli & Ferrara (2021) to be interesting and relevant.
 
-    - **The work presented in Seon & Kim 2020 (Figure 1) also shows the discrepancy at the peak of the spectrum that our work aims to correct, since the analytic solution is from Neufeld 1990 which is discussed elsewhere in our paper. Figure 2 shows another solution, but this is derived from the same series solution as Dijkstra et al 2006, which is discussed elsewhere in our text, which uses an approximation for the frequency-dependent eigenvalues. The reference has been added in our discussion of previous work in the introduction.**
+    - **The work presented in Seon & Kim 2020 (Figure 1) also shows the discrepancy at the peak of the spectrum that our work aims to correct, since the analytic solution is from Neufeld 1990 which is discussed elsewhere in our paper. Figure 2 shows another solution, but this is derived from the same series solution as Dijkstra et al 2006, which is discussed elsewhere in our text, and uses an approximation for the frequency-dependent eigenvalues. The reference has been added in our discussion of previous work in the introduction.**
 
 Section 2. Steady-State Solution:
 
@@ -80,8 +80,8 @@ Section 2. Steady-State Solution:
 
 3. After equation 18: Please mention roughly how many points are required for convergence. Can a non-uniform lattice be used to optimize computation? Can this approach be practically extended to non-uniform density, e.g. as a system of equations with interior and boundary conditions?
 
-     - **The number of points and value of \sigma_{\rm max} we used in our calculations have been included in this paragraph. The calculation is trivially fast with a uniform lattice. Though a non-uniform lattice would certainly perform better, it is simpler to use a uniform grid.**
-     - **Other density profiles are beyond the scope of this work.**
+     - **The number of points and value of \sigma_{\rm max} we used in our calculations have been included in this paragraph. The calculation is trivially fast with a uniform lattice. Though a non-uniform lattice might perform better, it is simpler to use a uniform grid.**
+     - **We believe it could be extended to other density profiles but view this as beyond the scope of this work.**
 
 4. Figure 1: Please provide brief summaries in the caption (or in the labels) to remind readers skimming this, e.g. H0 = fiducial solution, Hd = divergent solution, Hbc = our additional correction accounting for more self-consistent BCs. Finally, people may be more used to seeing J (rather than H) so please point out when/if there is are important differences for interpreting results.
 
@@ -94,7 +94,7 @@ Section 2. Steady-State Solution:
 
 6. In my opinion it is more helpful to think in terms of atau0 rather than tau0. Perhaps you can periodically remind the reader that T = 10^4 K leads to atau0 = ?, e.g. in the caption of Fig. 1.
 
-    - **A sentence mentioning the value of atau0 has been added in the caption of Figure 1. Since we use the same temperature throughout the paper and the optical depth changes only by factors of 10, it is easy for the reader to scale this value for the other plots at different optical depths, so we will not repeat it in every caption.**
+    - **A sentence mentioning the value of atau0 has been added in the caption of Figure 1. Since we use the same temperature throughout the paper and the optical depth changes only by factors of 10, it is easy for the reader to scale this value for the other plots at different optical depths, so we opted not to repeat it in every caption.**
 
 7. Fig. 2: Why are the yellow curves V shaped at line center when the standard is more U shaped? Is this due to plotting resolution or not using the wing approximation for the Voigt function? This is more apparent in figure 3, so it is worth explaining this feature properly.
 
@@ -104,7 +104,7 @@ Section 2. Steady-State Solution:
 
     - **The error used on these points is the square root of the number of counts in each bin, which is normalized and then plotted on a log scale. The bins at the very edge of the spectrum have only tens of photons (10 photons ~ 30% error), but by the 5th data point in from the left side the counts are up to ~100 (~10% error), so the error bars are very small here.**
     - **We conducted an independent calculation to test the accuracy of the error bars shown in the plot. Monte Carlo simulations at an optical depth of tau0=10^4 were performed with N=100,000 and N=10,000 photons, which were each binned in frequency as in Figure 3. Square root N error is not expected to be accurate in bins with less than about 20 counts, so these were excluded from the study. It was found that 68% (22 out of 32) of the remaining points from the higher N simulation fell within the error bars of the lower N simulation, which is consistent with 1-sigma error, as expected.**
-    - **A sentence has been inserted in the discussion of Figure 1 stating exactly how we quantify the error of the MC data. sqrt(N) error is a standard approach, and the simple test described above should resolve any concerns that the error bars are not representative of the uncertainty in the data.**
+    - **A sentence has been inserted in the discussion of Figure 1 stating exactly how we quantify the error of the MC data, and sqrt(N) error is a standard approach.**
 
 Section 3. Time-Dependent Diffusion
 
@@ -114,7 +114,7 @@ Section 3. Time-Dependent Diffusion
 
 2. Equation 33: Can you remind the reader about why this is the solution? (e.g. ansatz, harmonic forcing, residue calculus, etc.)
 
-    - **New text has been added referring to Equation 33 as "an approximate expression for the resonant response of the eigenfunctions".**
+    - **New text has been added referring to Equation 33 as "an approximate expression for the resonant response of the eigenfunctions". This is simply the functional form we found through numerical evaluation.**
 
 3. End of Section 3.1: Please summarize the intuition gained here, e.g. requiring more spatial terms than time terms is a result of the diffusion (Brownian motion / heat equation) behavior?
 
@@ -180,7 +180,7 @@ Section 4. Discussion:
 
 7. End of Section 4.2: "faces of each grid cell" For your own reference the Lucy path-based estimator method is much better than tracking face fluxes (as done in Huang 2017 and Smith 2017).
 
-    - **Noted. The mention of face fluxes has been removed and replaced with "within each cell".**
+    - **Agreed. The phrasing "faces of" has been removed.**
 
 Appendix A:
 
