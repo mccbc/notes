@@ -1,3 +1,8 @@
+For future 9999 meetings:
+Use roger's expertise more!
+Summary slides of the goals from the previous meeting, then go over progress towards those goals. Give context and motivation for the work to remind them what's been going on since 6 months ago. Practice the elevator pitch. Have first slide be a cartoon showing the physical setup of the problem.
+
+
 Questions
 ---
 
