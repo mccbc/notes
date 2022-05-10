@@ -1,4 +1,13 @@
-For future 9999 meetings:
+UpdateSourceTerms
+---
+
+- Does this need to be done in cartesian?
+    - Doesn't make much sense to subtract two vectors with different bases. If I do momentum after minus momentum before along each direction, the direction vectors have changed after the move.
+    - Orthonormal basis required --- currently set up that way, but normalizing on current position even for "before move" momentum vector.
+- Values of momentum change are always zero after photon escapes. It seems like the individual contributions are nonzero, but why is the output momentum change always zero?
+
+For future 9999 meetings
+---
 Use roger's expertise more!
 Summary slides of the goals from the previous meeting, then go over progress towards those goals. Give context and motivation for the work to remind them what's been going on since 6 months ago. Practice the elevator pitch. Have first slide be a cartoon showing the physical setup of the problem.
 
