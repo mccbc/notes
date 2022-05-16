@@ -1,3 +1,68 @@
+
+How to talk about the Lya paper
+---
+
+ - **Remind them what a resonance line is**
+    - Excited state de-excites faster than other processes can act 
+        - You get almost the same photon with the same energy out. The key thing is that you can treat it like scattering.
+- First thing to do - **when you have resonance line transfer, you can treat it as a diffusion problem in both frequency and space.**
+    - Remind them that the opacity depends on the frequency, so the distance a photon can travel before scattering is frequency-dependent.
+- **Discussion of what Harrington did right.**
+    - Harrington is a famous paper becuase he worked it out for the first time. He reduced the problem to the Poisson equation where the operator was in both space and frequency with a clever choice of frequency units.
+    - Poisson equation is something physicists know how to solve. 
+    - It only looks like a Poisson equation if you make the approximation that the photons are in the line wing. This is important to introduce because it sets up the reasoning for using the line wing approximation --- can't get Poisson equation without using only the Lorentzian piece of the line profile.
+    - Because it's the Poisson, he can use separation of variables to look for solutions. When you do that and enforce the boundary conditions, however, now your separation constant depends on frequency which invalidates the separation of variables.
+ - **Explaining underlying physics**
+     - Any time the photon scatters, the change in frequency is pretty small on average. De-excites at exactly the same frequency in the rest frame of the atom. All the frequency shift comes from the thermal motion of the scatters. Thermal motion is small compared to c, so frequency change is small. This means it's a diffusion process in frequency space. 
+     - We've reduced the resonance scattering problem to a diffusion problem. It's a second order operator in frequency and space. With the right change of variables in the line wing, we can change to the sigma variable and suddenly we get the Poisson equation.
+     - That's the thing to understand. Why does the Poisson equation fall out of this system?
+         - It ultimately comes from the face that we are diffusing in frequency space. 
+     - Enforcing the BC condition forces the separation constant to be frequency dependent, which is bad.
+     - Can solve the poisson equation analytically and get an expression with a zero flux boundary condition. That allows an anlytic solution, which most people have used in the past. Howevr, we want to formulate a better solution so we add our other solution on top.
+         - You can always sum linear combinations of solutions together to get a new solution. We can take the solution for J=0 and add a solution on top that will obey boundary conditions. Then we get a full solution that obeys the right bc at the cost of introducing new fourier amplitudes, so we don't have a nice analytic solution anymore. 
+     - Explain that to solve this with the right BC, we do a Fourier analysis to get a semianalytic solution (numerical fourier integral). Now we compare it to monte carlo. Don't need to go deeper into equations than that.
+     - When comparing to MC, remind them that we make the line wing approx
+         - Assumption for sigma variable is that we're on the line wing. 
+
+
+- **General tips**
+     - Pick and choose while summarizing the paper. 1st, 2nd, third most important plots only. 
+     - Don't say "oh there's a lot of math and it's really nasty."
+     - Spend more time on the initial plot than everything else. Don't spend to omuch time on tau and xs or time dependent.
+     - Spend time on why it's double peaked. Trough is an RT effect.
+         - Easier for photons to diffuse in freq space where the optical depth is lower due to the xsec. This is the characteristic double peaked profile when you have an optically thick core. The position of the peak is always set by the frequency diffusion process.
+
+
+
+
+To do:
+---
+
+Do a run not accelerated, see what the radiation force is
+
+Then do an accelerated run, see how different it looks.
+
+Take a given spectrum, compute the radiation force from it. Specialized to the case where the gas is moving supersonically.
+
+Analytic radiation force:
+xsec(voigt, function of freq) * dijkstra flux = radiation force
+
+
+WEIGHT: Number of photons per unit time emitted, PER PHOTON SAMPLE
+
+To normalize it, normally you have some target luminosity
+Multiply by the energy in ergs, then the number of photons
+Photons have a distribtion of energies, do the integral of the distribution, then get the weights for the whole system
+
+We're emitting at line center
+We just need to multiply by the energy of the photon at line center
+
+Weight would be the number of photon
+
+
+
+
+
 UpdateSourceTerms
 ---
 
