@@ -33,32 +33,20 @@ How to talk about the Lya paper
          - Easier for photons to diffuse in freq space where the optical depth is lower due to the xsec. This is the characteristic double peaked profile when you have an optically thick core. The position of the peak is always set by the frequency diffusion process.
 
 
-
-
 To do:
 ---
 
-Do a run not accelerated, see what the radiation force is
+ - [ ] Normalize momentum to a target luminosity
+     - Eventually, have this done in the problem generator / input file
+     - To normalize it, normally you have some target luminosity. Multiply by the energy in ergs, then the number of photons. Photons have a distribtion of energies, do the integral of the distribution, then get the weights for the whole system.
+     - WEIGHT: Number of photons per unit time emitted, PER PHOTON SAMPLE
+     - We're emitting at line center - we just need to multiply by the energy of the photon at line center
+     - 
+- [ ] Do a run not accelerated, see what the radiation force is
+     - [ ] Then do an accelerated run, see how different it looks.
 
-Then do an accelerated run, see how different it looks.
-
-Take a given spectrum, compute the radiation force from it. Specialized to the case where the gas is moving supersonically.
-
-Analytic radiation force:
-xsec(voigt, function of freq) * dijkstra flux = radiation force
-
-
-WEIGHT: Number of photons per unit time emitted, PER PHOTON SAMPLE
-
-To normalize it, normally you have some target luminosity
-Multiply by the energy in ergs, then the number of photons
-Photons have a distribtion of energies, do the integral of the distribution, then get the weights for the whole system
-
-We're emitting at line center
-We just need to multiply by the energy of the photon at line center
-
-Weight would be the number of photon
-
+- [ ] Take a given spectrum, compute the radiation force from it. Specialized to the case where the gas is moving supersonically.
+    - Analytic radiation force: xsec(voigt, function of freq) * dijkstra flux = radiation force
 
 
 
@@ -66,8 +54,8 @@ Weight would be the number of photon
 UpdateSourceTerms
 ---
 
-- Does this need to be done in cartesian?
-    - Doesn't make much sense to subtract two vectors with different bases. If I do momentum after minus momentum before along each direction, the direction vectors have changed after the move.
+- Does this need to be done in cartesian? **No.**
+    - Doesn't make much sense to subtract two vectors with different bases. If I do momentum after minus momentum before along each direction, the direction vectors have changed after the move. **While true, the effect is negligible as long as the domain is large and we're far from the center.**
     - Orthonormal basis required --- currently set up that way, but normalizing on current position even for "before move" momentum vector.
 - Values of momentum change are always zero after photon escapes. It seems like the individual contributions are nonzero, but why is the output momentum change always zero?
 
