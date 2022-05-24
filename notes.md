@@ -1,3 +1,8 @@
+ - [ ] Check radiation force against radiation flux for Thomson scattering case 
+    - kappa rho F / c is force per unit volume. You have all those variables so do a comparison --- NOT applicable in Lya case.
+    - To find reason for normalization offset in radiation forces between theory and numerical sim. Radiation force calculation should work even without resonant scattering
+    - First thing to do is calculate radiation force and compare against theory with acceleration turned off. Try a large number of photons.
+
 
 How to talk about the Lya paper
 ---
@@ -41,7 +46,9 @@ To do:
      - To normalize it, normally you have some target luminosity. Multiply by the energy in ergs, then the number of photons. Photons have a distribtion of energies, do the integral of the distribution, then get the weights for the whole system.
      - WEIGHT: Number of photons per unit time emitted, PER PHOTON SAMPLE
      - We're emitting at line center - we just need to multiply by the energy of the photon at line center
-     - 
+- [ ] Compare radial radiation force to analytic result.
+    - ANALYTIC: Expression for rad force is 1/3 * d/dr (J). Use Dijkstra (or add on Jbc) for J (frequency-integrated) and take derivative wrt r. Evaluate radially.
+    - NUMERICAL: Sum radiation forces across theta and phi directions to get radial rad force as a function of r alone.
 - [ ] Do a run not accelerated, see what the radiation force is
      - [ ] Then do an accelerated run, see how different it looks.
 
