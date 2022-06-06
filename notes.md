@@ -1,3 +1,52 @@
+Non-dimensionalization
+---
+
+Specific flux per dnu is 4 pi times H
+integrate it over nu - can turn into an integral over sigma
+The only sigma dependence is in the cosh in the denominator
+
+Cosh +- sin, sin depends only on radius
+Set up these integrals over each term and just by changing variables from sigma to the argument of the cosh - new integration variable will be the argument of cosh
+
+Brings out factors of sigma, kr/Delta - but this is the optical depth
+Pulls the tau dependence out front and allows us to see what the tau dependence is.
+
+Complicated function of R thats left
+
+
+Talk notes
+---
+Radiation force = 4 pi * xsec * 1/c * n_hydrogen * H
+
+short qualitative discussion of what is resonant scattering - not just brownian motion, diffusion in both space and frequency at the same time
+
+Show what happens when we run the code - it shows both radius and frequency.
+ What do the steps look like when you're away from line center? Show the red/blue diffusion plots
+
+**No accel, 10k photons, tau=1e7**
+cpu time used  = 14310.3
+samples/cpu_second = 0.698797
+
+
+To do
+---
+
+- [X] Create overleaf to organize plan for simulation paper result
+    - Scalar ionization calculation
+    - Coupling monte carlo to hydro using radiation forces
+    - Simulate incoming radiation with a stellar spectrum, all absorption no scattering
+    - 1D spherically symmetric calculation, awkward spherically symmetric incoming flux at the boundary
+    - 3D calculation with more HPC resources
+    - Ionization and recombination in the atmosphere
+- [X] Run radiation force calculation for 10k photons, x1rat set at 0.049
+- [ ] Revisit radial radforce comparison, do derivatives / angular integrals carefully. Target quantity to plot as a function of radius is force per unit volume.
+    - Average over cells rather than summing
+    - Factors of 4pi
+    - Could be a factor of 1/k (tau) missing from theory calculation which would explain the normalization discrepancy. Check carefully.
+
+Rad force
+---
+
  - [ ] Check radiation force against radiation flux for Thomson scattering case 
     - kappa rho F / c is force per unit volume. You have all those variables so do a comparison --- NOT applicable in Lya case.
     - To find reason for normalization offset in radiation forces between theory and numerical sim. Radiation force calculation should work even without resonant scattering

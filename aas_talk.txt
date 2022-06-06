@@ -1,0 +1,4 @@
+
+
+So, let's look at a single hydrogen atom in this gas. It has some thermal velocity v. Now, say a photon with wavelength near Lyman Alpha comes along, and, in the atom's frame, this photon is the *perfect* energy to excite the electron to the n=2 state. When the electron de-excites, it'll emit a Lyman Alpha photon in a random direction, still in the rest frame of the atom. Due to the atom's velocity in the lab frame, however, that photon will have a frequency slightly different than Lyman Alpha.
+
