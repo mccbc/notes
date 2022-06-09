@@ -17,7 +17,7 @@ What is resonant scattering?
 
 Say a hydrogen atom absorbs a Lyman Alpha photon in its rest frame, exciting the electron to the n=2 state. When the electron de-excites, it'll emit a Lyman Alpha photon in a random direction. But, due to the atom's velocity in the lab frame, that photon will have a frequency slightly different than Lyman Alpha. 
 
-That is Resonant Scattering - the absorption and near-immediate re-emission of a photon of a certain wavelength by an atom. The emitted photon undergoes a slight frequency shift due to the atom's thermal velocity, and this process occurs on much shorter timescales than collisional de-excitation or broadening, for instance, meaning that it dominates at low gas densities, such as those found in the upper atmospheres of exoplanets. 
+That is Resonant Scattering - the absorption and near-immediate re-emission of a photon of a certain wavelength by an atom. The emitted photon undergoes a slight frequency shift due to the atom's thermal velocity, and in regions of low gas density this process occurs on much shorter timescales than collisional de-excitation or broadening, meaning that it dominates in the upper atmospheres of exoplanets. 
 
 Why does this matter for atmospheric escape?
 ============================================

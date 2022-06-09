@@ -1,3 +1,21 @@
+To do
+---
+
+Need to evaluate tau scaling with rad force, not just flux - there will be an extra line profile in there.
+
+Treat the line profile as a delta function at line center when integrating over sigma (alpha). See what factors of tau0 come out of it. 
+
+Evaluate the non-dimensional flux expression at R. Should get L/4piR^2 bc of the normalization.
+
+
+Items for 6/9
+---
+Paper accepted - yay!
+AAS talk - what to cut
+Nondimensionalization - what am I missing?
+ML class
+
+
 Non-dimensionalization
 ---
 
