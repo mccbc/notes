@@ -1,4 +1,55 @@
+Introduction
+============
 
+Given the abundance of hydrogen in the universe, the Lyman α (Lyα) line is an important component of radiation fields in a wide range of astrophysical settings. Our goal is to examine its role in driving outflows in planetary atmospheres.
 
-So, let's look at a single hydrogen atom in this gas. It has some thermal velocity v. Now, say a photon with wavelength near Lyman Alpha comes along, and, in the atom's frame, this photon is the *perfect* energy to excite the electron to the n=2 state. When the electron de-excites, it'll emit a Lyman Alpha photon in a random direction, still in the rest frame of the atom. Due to the atom's velocity in the lab frame, however, that photon will have a frequency slightly different than Lyman Alpha.
+In these slides I'll present our novel additions to the solution of Lyman Alpha radiation transfer in spherical geometry, and show that these additions correct for a discrepancy in the Lyman Alpha spectra of previous works as compared with Monte Carlo simulations.
 
+Background
+==========
+
+Hubble Space Telescope (HST) observations have found large Lyα transit depths around a handful of exoplanets, revealing a population of atoms extending out to few planetary radii.
+
+These observations motivate a study of the physics of Lyman Alpha interactions with the Hydrogen atom population in such environments, where the main mechanism of interest is resonant scattering.
+
+What is resonant scattering?
+============================
+
+Say a hydrogen atom absorbs a Lyman Alpha photon in its rest frame, exciting the electron to the n=2 state. When the electron de-excites, it'll emit a Lyman Alpha photon in a random direction. But, due to the atom's velocity in the lab frame, that photon will have a frequency slightly different than Lyman Alpha. 
+
+That is Resonant Scattering - the absorption and near-immediate re-emission of a photon of a certain wavelength by an atom. The emitted photon undergoes a slight frequency shift due to the atom's thermal velocity, and this process occurs on much shorter timescales than collisional de-excitation or broadening, for instance, meaning that it dominates at low gas densities, such as those found in the upper atmospheres of exoplanets. 
+
+Why does this matter for atmospheric escape?
+============================================
+
+A Lyman Alpha photon's cross section for interaction with neutral hydrogen is sensitively dependent on frequency. Photons in the wing of the Lyman Alpha line may be optically thin to the hydrogen gas, meaning they can travel much farther before scattering and will more readily escape. But, photons in the core barely diffuse in space since their mean free path is so small --- instead, they must diffuse in frequency until they become optically thin. Thus, we have a diffusion process in both space and frequency at the same time. 
+
+Previous analytic solution
+==========================
+
+This diffusion problem in both frequency and space was first solved in 1973 by J. P. Harrington, who showed that with the right change of variables it simplifies to the Poisson equation if you assume that all the photons are on the line wing. He used separation of variables to find a solution, but upon enforcing the boundary conditions, this solution gives zero mean intensity at the surface and makes the separation constant frequency-dependent. 
+
+Novel, semi-analytic solution
+=============================
+
+What we have done is introduce a correction term, which, when added to the fiducial solution derived by Harrington, enforces the correct boundary condition at the surface.
+
+This new solution is published in McClellan et al 2022, which you can access here by scanning this QR code. We handle the frequency-dependent boundary condition using a Fourier expansion in the frequency variable, sigma, which yields a semi-analytic solution to the problem that necessitates the use of a numerical Fourier integral.
+
+Results
+=======
+
+Here's a Lyman Alpha spectrum from a Monte Carlo simulation, shown as these black scatter points. The characteristic double-peaked profile is due to the large Lyman Alpha cross section at line center. It's easier for photons to diffuse in space where the optical depth is lower out in the line wing, which is why we see most of the photons escaping far from the line core, which is optically thick. The position of the peaks is always set by the frequency diffusion process and depends on the line center optical depth.
+
+On top of the Monte Carlo, we have overplotted some solutions to compare the emergent flux at the surface of the sphere. We see that our boundary condition correction term, the blue dotted line, when added to the fiducial solution, the yellow solid line, forms a new solution that agrees much better with the Monte Carlo results at the spectral peaks. There is a 5-10% excess in flux present in the fiducial solution here, which is persistent across all previous works that that use the Harrington boundary condition.
+
+We have also tested the solutions' accuracy at various optical depths and monochromatic source frequencies, finding that the scale of the boundary condition correction goes as (a * tau0)^(-1/3), meaning a smaller correction is needed at very large line center optical depth, but that the correction is substantial at lower optical depths.
+
+Current work
+============
+
+In follow-up work to our recent publication, I have implemented a Monte Carlo acceleration scheme to the radiation magnetohydrodynamics code, Athena++. This module I've written samples photon properties from statistical distributions in regions of large optical depth, which has shown some incredibly promising computational speedups while minimally affecting the escape spectrum. 
+
+I am currently implementing and testing a new module that calculates radiation forces due to resonant scattering, which will eventually be coupled to the hydrodynamics.
+
+Our goal is to perform a robust, computationally-efficient simulation of an exoplanet atmosphere with fully-coupled hydrodynamics and radiation using resonant scattering of Lyman Alpha.
