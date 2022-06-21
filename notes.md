@@ -1,11 +1,112 @@
+Assume an optical depth as a func of radius, lay down some distribution of ionizing photons. Then test how we get the ionization equilibrium from the passive advected scalars.
+    Ionization rate vs column
+    - Optically thin ionization rate per particle
+    - Equate to recombination rate per volume
+    - Can get abundance as a function of total density
+        -  Assumption that there is no advection
+    - Have to couple rate equations to a passive advected scalar
+
+    - Turn on passive scalars
+    - Run code without monte carlo
+    - Run a 1D calculation with BC, have rates being calculated in every zone at every given time, on a flow that's evolving
+    - Effect of local rate changes but also advection of a scalar
+
+ - Do a spherically symmetric run with point mass gravity turned on, sim domain is an annulus. Should settle into hydrostatic balance. Once that's done, turn on the scalars.
+
+Hydro simulation in a sphere - annulus with inner radius and outer radius 10^10, 10^11
+    - Point mass gravity
+    - Use a jupiter mass
+    - Initial energy density - code will evolve it as a polytrope
+        - P prop to something to gamma
+        - Could also do constant density, not moving, then use polytripe to convert density and temperature into constant energy density
+        - Set nx2, nx3 = 1
+        - Pick inner and outer radius - want it to be pretty thin
+            - Inner radius - jupiter radius
+            - Outer boundary is 3-10 jupiter radii
+            - Try to initialize those temperatures and densities, set the velocities to zero
+            - X1 inner boundary reflecting, outer outflow
+
+Spherical blast wave - only difference should be the energy density you initialize it with. Really just need to set up a pgen, get initial condition. Then can start thinking about adding scalar.
+
+
+
+What is ioniziation cross sec for photons with energy greater than 13.6 ev?
+If you're given a number density of atomic h in the groun dstate, multiply n sigma
+
+At every place in the atmosphere you have an ionization rate, then there's a recombination coefficient. Then multply by number density of protons squared, that's the recombination rate.
+
+Recomb rate, ionization rate. Competing to determine what the ionization fraction is.
+
+Hydro piece - advection, forces, source & sink terms, 
+
+Piece for ionizing radiation - determine ionization rate and analytically compute a recom ination rate. Evolve composition
+
+Piece for Lyman Alpha calculation
+
+
+Look up two formulas in ISM book
+ - Photoionization and recombination rates
+ - Draine pg 127, ch 13, ionization processes
+ -  Eq 13.1 photoionization from ground state. num dens * cross sec is absorption coeff (1/mfp)
+ -  137 - radiative recombination dominates at low densities. Table 14.1 has analytic approx. Func of temp.
+ -  Need a place to store microphsical data.
+     -  Determines absorption & scattering coeff
+
+Separate RT calculation for photons above 13.6 EV because these can ionize hydrogen. Used to determine the ionization fraction. SEPARATE from Lya.
+
+
+
+
+
+
+
+
+
+
+AAS Conference
+---
+ - My talk not uploaded yet, but should be accessible for 30 days after the conference
+ - Met Kara Green, incoming UVA grad
+ - Networked with a lot of LCO staff - friends of Megan from UCSB
+     - One of them (Jared Goldberg) just got a position at the Flat Iron Institute, talked about that quite a bit
+ - Talked to some JPL people about Lya project
+
+Deep and chemically heterogeneous magma oceans on lava planets
+---
+N. Cowan, McGill University
+
+ - Dayside of lava planets have a rock vapor atmosphere that flows quickly toward the night side, but transports negligible heat. Surface temperature can be 3000 K on day side, down to 1500 K at terminator, and cold on the night side.
+ - Used thermodynamics / geochemistry models to predict properties of magma ocean
+ - Dayside magma ocean is deeper than previously thought
+ - https://arxiv.org/abs/2205.02864
+
+Lyman-Alpha stellar spectra modeling
+---
+Michaela Leung
+
+ - https://arxiv.org/abs/2206.05147
+ - Based on three early M and K star measurements with very high radial velocities
+     - Most of the Lya flux is shifted away from the geocoronal line core, contamination from the ISM
+     - Revealed that previous stellar spectra underpredicted line core of Lya in these types of stars
+ - Using PHOENIX atmosphere code
+
+
+The Inner Shadow of the Black Hole in M87*: A Direct View of the Event Horizon
+---
+A. Chael
+
+- Cool raytracing / geodesic calculations of the shadow of a BH, as in the EHT observations
+- Inner vs. outer shadow in BHs with an equatorial disk
+    - Inner shadow comes from rays that don't cross the equatorial plane of the disk - directly into the BH
+    - Outer shadow comes from rays that DO cross the equatorial plane, then "bend" around back into the BH
+- Relative size, shape, and centroid of the photon ring and inner shadow can be used to estimate BH mass and spin, breaking degeneracies in measurements
+
 To do
 ---
 
-Need to evaluate tau scaling with rad force, not just flux - there will be an extra line profile in there.
-
-Treat the line profile as a delta function at line center when integrating over sigma (alpha). See what factors of tau0 come out of it. 
-
-Evaluate the non-dimensional flux expression at R. Should get L/4piR^2 bc of the normalization.
+ - [ ] Need to evaluate tau scaling with rad force, not just flux - there will be an extra line profile in there.
+    - Treat the line profile as a delta function at line center when integrating over sigma (alpha). See what factors of tau0 come out of it. 
+ - [ ] Evaluate the non-dimensional flux expression at R. Should get L/4piR^2 bc of the normalization.
 
 
 Items for 6/9
@@ -57,7 +158,7 @@ To do
     - 3D calculation with more HPC resources
     - Ionization and recombination in the atmosphere
 - [X] Run radiation force calculation for 10k photons, x1rat set at 0.049
-- [ ] Revisit radial radforce comparison, do derivatives / angular integrals carefully. Target quantity to plot as a function of radius is force per unit volume.
+- [X] Revisit radial radforce comparison, do derivatives / angular integrals carefully. Target quantity to plot as a function of radius is force per unit volume.
     - Average over cells rather than summing
     - Factors of 4pi
     - Could be a factor of 1/k (tau) missing from theory calculation which would explain the normalization discrepancy. Check carefully.
@@ -65,7 +166,7 @@ To do
 Rad force
 ---
 
- - [ ] Check radiation force against radiation flux for Thomson scattering case 
+ - Check radiation force against radiation flux for Thomson scattering case 
     - kappa rho F / c is force per unit volume. You have all those variables so do a comparison --- NOT applicable in Lya case.
     - To find reason for normalization offset in radiation forces between theory and numerical sim. Radiation force calculation should work even without resonant scattering
     - First thing to do is calculate radiation force and compare against theory with acceleration turned off. Try a large number of photons.
