@@ -1,3 +1,39 @@
+Isothermal atmosphere with GM/r^2 graviational potential - analytic solution
+
+Start the simulation with initial conditions similar to that equilibrium
+
+
+
+
+
+
+
+
+
+
+
+Non-LTE vs LTE
+---
+
+ - LTE is when you assume all radiation is blackbody, and all level populations are set by the temperature. Very simple.
+- If you have radiation different than blackbody, and level populations set by that rad field, then you will have a big difference in LTE calculations rather than non-LTE calculations.
+ - Temperature is very sensitive to line cooling in opticaly thin environments. 
+ - Collisional de-excitation, radiative excitation
+     - Level populations determine these rates, amount of line cooling
+ - If you rely on lines for radiation force / cooling, Non-LTE is very important
+
+TDE notes
+---
+
+ - As the tidal stream comes in, the tidal forces will compress the stream, so it gets smaller.
+     - Expansion happens when the stream passes its periapse, but often simulations will overestimate the expansion. It **should** be the same width as it was before.
+ - Cooling keeps the stream relatively thin as it expands back out, which is what we see in Xiaoshan's results
+ - 
+
+
+Ionization state hydro calculation
+---
+
 Assume an optical depth as a func of radius, lay down some distribution of ionizing photons. Then test how we get the ionization equilibrium from the passive advected scalars.
     Ionization rate vs column
     - Optically thin ionization rate per particle
@@ -18,7 +54,7 @@ Hydro simulation in a sphere - annulus with inner radius and outer radius 10^10,
     - Use a jupiter mass
     - Initial energy density - code will evolve it as a polytrope
         - P prop to something to gamma
-        - Could also do constant density, not moving, then use polytripe to convert density and temperature into constant energy density
+        - Could also do constant density, not moving, then use polytrope to convert density and temperature into constant energy density
         - Set nx2, nx3 = 1
         - Pick inner and outer radius - want it to be pretty thin
             - Inner radius - jupiter radius
