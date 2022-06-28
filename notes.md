@@ -1,9 +1,9 @@
 Improvements to simple hydro simulation
 ---
-- [ ] Density floor - should be around 1e-18 but check that it's not quite being reached after running sim
+- [X] Density floor - should be around 1e-18 but check that it's not quite being reached after running sim
 - Issue was mean molecular weight was set to 1 in dimensionless units, but needed to multiply by m_p
-- [ ] Run sim again, output hdf5 and plot using athena read. Make a .mp4 rather than a gif
-- [ ] Check that initial conditions (t=0) are being set according to the theory expectation
+- [X] Run sim again, output hdf5 and plot using athena read. Make a .mp4 rather than a gif
+- [X] Check that initial conditions (t=0) are being set according to the theory expectation
 - [ ] Compare converged result with theory expectation. Should be close since we're starting near equilibrium
 
 
