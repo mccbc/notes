@@ -1,6 +1,29 @@
+Photoionization Equilibrium
+---
+ - [ ] Write user source term function that tracks changes to the passive scalar n_H
+     - n_p is related to rho by n_p = rho/m_p - n_H
+     - At each timestep, add delta_t * (Gamma * n_H - alpha * n_p^2)
+         - Gamma is 1/6 hrs, alpha is recombination rate coefficient at 10^4 K
+         - Initialize by setting Gamma * n_H = alpha n_p^2 (at equilibrium)
+ - [ ] Derive Gamma based on radiative energy density (use blackbody with T=1e4)
+     - Integral over solid angle dilutes to pi R^2 / d^2 to give radiation energy density at the planet
+     - Simple numerical integral over frequency bins?
+
+
+
+
+
+
+Passive Scalars
+---
+ - [X] Initialize single value scalar in simulation, let it be advected
+ - [ ] Have scalar be determined by ionization / recombination rate equations
+
+
+
 Improvements to simple hydro simulation
 ---
-- [X] Density floor - should be around 1e-18 but check that it's not quite being reached after running sim
+- [X] Density floor - should be around 1e-18 but  check that it's not quite being reached after running sim
 - Issue was mean molecular weight was set to 1 in dimensionless units, but needed to multiply by m_p
 - [X] Run sim again, output hdf5 and plot using athena read. Make a .mp4 rather than a gif
 - [X] Check that initial conditions (t=0) are being set according to the theory expectation
