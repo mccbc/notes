@@ -1,6 +1,44 @@
+Passive Scalars Update (Working)
+---
+
+ - Fast outflow will advect in whatever the boundary conditions are - garbage in garbage out
+ - We have a hydro code with H number density on a 3d grid. Connect this to RT code. Need numdens of scatterers.
+ - Opcaity funcs assume a constant ionization frac (everything neutral)
+ - Scalar must be accessed in addition to all the other variables to know what the n scatterers is.
+ - Requires a slight change to the MC block 
+    - Needs an array for the passive scalars. Add a space, copy pscalars over from the meshblocks.
+- RT code and ionization code should be unified! 
+    - Incorporate the ionization-tracking user source function into the MCRT code, have it advect the passive scalar.
+    - Load passive scalar into opacity functions to get number density of scatterers
+
+
+Ionization equilibrium equation breakdown
+---
+ - Gamma is ionization coefficient
+     - Reactants: photon + neutral hydrogen
+     - Products: proton + electron
+     - When gamma is higher and the term Gamma * n_H is positive, more ionizations occur and n_p increases
+ - Alpha is recombination coefficient
+     - Reactants: proton + electron
+     - Products: neutral hydrogen + photon
+     - When alpha is higher, the term -alpha * n_e * n_p = -alpha * n_p^2 is a larger negative number, which brings the number density of protons n_p down
+
+
+
+Debugging ionization passive scalar
+---
+
+ - [X] Ci should track ionization fraction, not n_h, since it should be between 0 and 1.
+ - [ ] Reformulate rate equations using X, ionization fraction (rho * X is conserved variable)
+     - Make sure this formulation matches what's in the code
+ - [ ] Add a user mesh block for storing additional variables, dX/dt, etc
+ - [ ] Look at fractional change dX/dt / X as a func of time
+
+
+
 Photoionization Equilibrium
 ---
- - [ ] Write user source term function that tracks changes to the passive scalar n_H
+ - [x] Write user source term function that tracks changes to the passive scalar n_H
      - n_p is related to rho by n_p = rho/m_p - n_H
      - At each timestep, add delta_t * (Gamma * n_H - alpha * n_p^2)
          - Gamma is 1/6 hrs, alpha is recombination rate coefficient at 10^4 K
@@ -8,10 +46,6 @@ Photoionization Equilibrium
  - [ ] Derive Gamma based on radiative energy density (use blackbody with T=1e4)
      - Integral over solid angle dilutes to pi R^2 / d^2 to give radiation energy density at the planet
      - Simple numerical integral over frequency bins?
-
-
-
-
 
 
 Passive Scalars
