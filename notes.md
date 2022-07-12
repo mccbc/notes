@@ -1,3 +1,10 @@
+Implicit v. Explicit Update
+---
+ - Explicit method working in the code
+ - Implicit method derived for n_p+
+     - [ ] Put this in the code and test!
+     - [ ] Incorporate ionization code into Lya MC code, have it determine the number density of hydrogen
+
 Passive Scalars Update (Working)
 ---
 
