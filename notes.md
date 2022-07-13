@@ -1,3 +1,12 @@
+Trammell Ionization Rate Fit
+---
+ - Uses the quiet solar Lyman continuum spectrum, tabulates \int phi_nu dnu in each frequency bin
+     - Power law fit is created from this observational data
+ - Power law fit leads to much less ionization at high densities, extending even to intermediate densities
+ - Ionization rate goes as N_H^-1.5, where N_H is the neutral hydrogen column
+     - Calculated by integrating dr * n_H inwards from surface of sphere
+
+
 Implicit v. Explicit Update
 ---
  - Explicit method working in the code
