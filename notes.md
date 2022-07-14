@@ -1,3 +1,21 @@
+Code integration
+---
+ - [ ] Allocate new array in MonteCarloBlock.hpp
+ - [ ] In MonteCarloBlock.cpp, edit constructor and destructor to create athena array IF scalars are enabled
+     - Look elsewhere in the code to see what specific flag needs to be checked
+ - [ ] Create new function in montecarlo.cpp called "GetScalar", which does a hard copy of the passive scalar array in the MeshBlock and copies the data into the MonteCarloBlock
+ - [ ] Now that the passive scalar is in the MonteCarloBlock, access it from the opacity functions to get the number density of scatterers
+
+Ionization code checks
+---
+ - We appear to be overattenuated
+     - As if the hydrogen column is too high
+ - Take half ionization density - optically thin gamma (1/6 hrs), divide by alpha. This is n_c, or the critical density.
+ - n_critical times some length scale - length scale is the scale height of the atmosphere. This is a point of reference for what the column should be.
+ - Print out the column in each one of the cells - ideally, when it gets to be of order 10^18, you'll start to see attenuation.
+     - Below this, shouldn't see much difference between the optically thin limit and the attenuated ionization rate.
+     - Check that the ionization fraction is 50% at the critical density.
+
 Trammell Ionization Rate Fit
 ---
  - Uses the quiet solar Lyman continuum spectrum, tabulates \int phi_nu dnu in each frequency bin
