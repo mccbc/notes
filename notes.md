@@ -1,3 +1,6 @@
+- [ ] Initialize simulation with Trammell initial condition, not constant Gamma equilibrium - particularly important for ghost zones
+
+
 Code integration
 ---
  - [ ] Allocate new array in MonteCarloBlock.hpp
@@ -14,7 +17,7 @@ Ionization code checks
  - n_critical times some length scale - length scale is the scale height of the atmosphere. This is a point of reference for what the column should be.
  - Print out the column in each one of the cells - ideally, when it gets to be of order 10^18, you'll start to see attenuation.
      - Below this, shouldn't see much difference between the optically thin limit and the attenuated ionization rate.
-     - Check that the ionization fraction is 50% at the critical density.
+     - Check that the ionization fraction is 50% at the critical density **(DONE)**
 
 Trammell Ionization Rate Fit
 ---
