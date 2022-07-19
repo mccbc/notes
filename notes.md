@@ -1,30 +1,24 @@
-Lya emission lin efrom the star - ionization source, asymmetric, coming from one side
+Emissivity
+---
 
-Could do right now: solving rate equation. One term represents ionization, one represents recombination. Rouhgly every recombination produces a Lya photon
- Number of photons being input per second in the grid
+ - Lya emission line from the star - ionization source, asymmetric, coming from one side
+    - Could do right now: solving rate equation. One term represents ionization, one represents recombination. Roughly every recombination produces a Lya photon
+    - Number of photons being input per second in the grid - this is what you want to solve for
+    - Choosing perfectly line center is fine if they're optically thick
 
-Choosing perfectly line center is fine if they're optically thick
+ - Need a way to sample where the recombination photons are coming from - sample in theta, phi, but consider where they come from in r
+     - Shane's free-free emissivity
+         - Photon weights?
+         - Weight doeson't change during scattering
+     - Randomly select zones - changing the weight, have very different weights for the photon packets when they're initialized
+     - Similar photon rates reduce the variance
 
-Need a way to sample where the recombination photons are coming from - sample in theta, phi, but consider where theyc ome from in r
-
-Shane's free-free emissivity
-Photon weights?
-    Weight doeson't change during scattering
-
-Randomly select zones - changing the weight, have ery different weights for the photon packets when they're initialized
-
-Similar photon rates reduce the variance
-
-Array of emissivities
-
-Free-free emissivity - emitting photons in every zone
-    Decide how to pick zones - different zones have different emissivities
-    Different source term rates for the photons, in this case
-    2 different ways
-       Every photon packet has the same number of photons, create more photons in areas with higher ionization rates. Can do this approximately or you can calculate the volume integrated recomb rate in every zone, then have a big table which is a probability distribution of each zone.
-       OR, randomly sample all zones. Has to be truly random. Equal statistics. Then WEIGHT the photon by the ionization rate in the grid zone that it is sampled to be created within.
-
-
+ - Free-free emissivity - emitting photons in every zone
+     - Decide how to pick zones - different zones have different emissivities
+     - Different source term rates for the photons, in this case
+     - 2 different ways
+         - Every photon packet has the same number of photons, create more photons in areas with higher ionization rates. Can do this approximately or you can calculate the volume integrated recomb rate in every zone, then have a big table which is a probability distribution of each zone
+         - OR, randomly sample all zones. Has to be truly random. Equal statistics. Then WEIGHT the photon by the ionization rate in the grid zone that it is sampled to be created within.
 
 - [ ] Initialize simulation with Trammell initial condition, not constant Gamma equilibrium - particularly important for ghost zones
 
