@@ -1,3 +1,33 @@
+Incorporating Emissivity
+---
+
+ - enum - would want to add an enumeration for scalars. Instead of accessing by 0, access with "IHP"
+ - Using the scalar - initialize the scalar with some amount of ionization, then use that to compute the recombination rate
+     - Then, based on recomb rate, initialize photons throughout the sphere accordingly
+
+
+ - [ ] Write new problem generator - has elements of both of the others
+     - Want to compile as if it's in montecarlo, running single static calculation
+     - Eventually the code will, on each time step, run the entire monte carlo calculation
+     - When that's done, it'll use the quadratures, rad force, net heating and cooling to update hydro, hydro will do the next timestep
+
+ - I have implemented the scalar - now want to compute emissivity in each zone based on that following the model (free free emissivity array)
+ - [ ] Want to do one timestep - one run of mc with all the physics in it - Shane will get the time dependent calculation working
+ - Implementation shouldn't be too bad, but testing will be.
+ - Tests 
+     - when you launch the lya, need to make sure the output is correct
+     - Could use a user output variable to specify the energy of every photon created. Don't want every time the photon scattered - but want just after initialization, what is the energy that you created? That's in there already.
+
+ - Updating moments for net heating and colling
+     - UpdateSourceTerms
+     - After we've started running, it'll keep tracking every time we have a scattering
+     - We just want to see that emission corresponds to initialization
+
+     - [ ] Comment out - Only update source terms after initialization, not after scattering or absorption as a test.
+
+         - Check that : we're emitting all the photons with the right energies, and confirm that the energy and momentum updates are working correctly
+
+
 Emissivity
 ---
 
@@ -25,11 +55,11 @@ Emissivity
 
 Code integration
 ---
- - [ ] Allocate new array in MonteCarloBlock.hpp
- - [ ] In MonteCarloBlock.cpp, edit constructor and destructor to create athena array IF scalars are enabled
+ - [X] Allocate new array in MonteCarlo.hpp
+ - [X] In MonteCarloBlock.cpp, edit constructor and destructor to create athena array IF scalars are enabled
      - Look elsewhere in the code to see what specific flag needs to be checked
- - [ ] Create new function in montecarlo.cpp called "GetScalar", which does a hard copy of the passive scalar array in the MeshBlock and copies the data into the MonteCarloBlock
- - [ ] Now that the passive scalar is in the MonteCarloBlock, access it from the opacity functions to get the number density of scatterers
+ - [X] Create new function in montecarlo.cpp called "GetScalar", which does a hard copy of the passive scalar array in the MeshBlock and copies the data into the MonteCarloBlock
+ - [X] Now that the passive scalar is in the MonteCarloBlock, access it from the opacity functions to get the number density of scatterers
 
 Ionization code checks
 ---
