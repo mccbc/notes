@@ -1,5 +1,24 @@
+Rayleigh-Taylor Instability
+---
+ - Typical set up: dense fluid on top, less dense fluid underneath
+     - Pressure gradient force, gravity - fluid wants to flip
+ - With radiation: less dense fluid on top, dense fluid underneath
+     - Would nominally be stable
+     - But, when optically thin, radiation force (kapp_esa rho F / c) from electron scattering acting outwards adds a new acceleration opposing gravity
+     - Net acceleration is outwards - so fluid wants to flip
+     - **What if the gas is optically thick?**
+         - Radiation is not isotropic?
+
+
+
+
 Incorporating Emissivity
 ---
+
+ - emission is an athena array, initialized by InitializeEmission in emission.cpp
+     - In the InitializePhoton function, photons take their weights from this emission array and get their starting positions from PhotonEmitFreeFree in emission.cpp
+ - [ ] Will want to write additional InitializeEmissionLya and PhotonEmitLya functions in emission.cpp
+     - Emissivity of a grid zone is number of photons emitted per second - see Phil's notes, but roughly 10^34 s^-1
 
  - enum - would want to add an enumeration for scalars. Instead of accessing by 0, access with "IHP"
  - Using the scalar - initialize the scalar with some amount of ionization, then use that to compute the recombination rate
